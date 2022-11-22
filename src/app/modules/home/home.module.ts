@@ -1,3 +1,4 @@
+import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { CoreModule } from './../../core/core.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +14,8 @@ import { HomeComponent } from './home.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    CoreModule
+    CoreModule,
+    DashboardModule
   ]
 })
 export class HomeModule { }
