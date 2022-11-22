@@ -1,9 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /*AUX4TECH*/
 .bg-dark-a4t{
   background-color: var(--dark-color);
+}
+.table-dark-a4t {
+  --bs-table-color: #FFF;
+  --bs-table-bg: #6C757D;
+  --bs-table-border-color: #dfe0e1;
+  --bs-table-striped-bg: #ecedee;
+  --bs-table-striped-color: #000;
+  --bs-table-active-bg: #dfe0e1;
+  --bs-table-active-color: #000;
+  --bs-table-hover-bg: #e5e6e7;
+  --bs-table-hover-color: #000;
+  color: var(--bs-table-color);
+  border-color: var(--bs-table-border-color);
 }

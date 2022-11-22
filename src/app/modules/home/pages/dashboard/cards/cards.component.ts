@@ -7,10 +7,10 @@ import { Component } from '@angular/core';
 })
 export class CardsComponent {
   public cards = [
-    { static: true, icon: 'pets', title: 'Paciente', info: null },
-    { static: true, icon: 'monitor_heart', title: 'Ficha Clinica CPA', info: null },
-    { static: true, icon: 'person_add', title: 'Cadastro de usuários', info: null },
-    { static: false, icon: null, title: 'Total de pacientes cadastrados', info: '32' },
+    { static: true, icon: 'pets', title: 'Paciente', info: null, label: "pets" },
+    { static: true, icon: 'monitor_heart', title: 'Ficha Clinica CPA', info: null, label: "ficha-clinica-cpa" },
+    { static: true, icon: 'person_add', title: 'Cadastro de usuários', info: null, label: "cadastro-de-usuarios" },
+    { static: false, icon: null, title: 'Total de pacientes cadastrados', info: '32', label: "total-de-pacientes-cadastrados" },
   ];
 
   constructor() {}
