@@ -1,0 +1,16 @@
+.sidebar{
+  height: 100vh;
+  background-color: var(--dark-color);
+}
+.sidebar .nav-link.active{
+  color: var(--primary-color);
+}
+.sidebar .nav-link{
+  color: var(--white-color);
+}
+.sidebar .nav-link:hover{
+  background-color: var(--secundary-color);
+}
+.sidebar .nav-link.disabled{
+  color: var(--secundary-color);
+}

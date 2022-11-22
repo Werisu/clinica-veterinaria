@@ -1,3 +1,17 @@
 <app-header></app-header>
-<p>home works!</p>
-<app-footer></app-footer>
+<div class="d-flex">
+  <app-sidebar></app-sidebar>
+  <div class="d-flex flex-column flex-grow-1 position-relative">
+    <div id="page-content">
+      <div class="container text-center">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <h1 class="fw-light mt-4 text-white">Sticky Footer using Flexbox</h1>
+            <p class="lead text-white-50">Use just two Bootstrap utility classes and three custom CSS rules and you will have a flexbox enabled sticky footer for your website!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>
