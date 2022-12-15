@@ -2,9 +2,10 @@ import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { CoreModule } from './../../core/core.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from "@angular/material/toolbar";
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { HomeComponent } from './home.component';
     CommonModule,
     HomeRoutingModule,
     CoreModule,
-    DashboardModule
+    DashboardModule,
+    MatSidenavModule,
+    MatToolbarModule
   ]
 })
 export class HomeModule { }

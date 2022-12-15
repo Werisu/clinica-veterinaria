@@ -1,12 +1,24 @@
-<app-header></app-header>
-<div class="d-flex">
-  <app-sidebar></app-sidebar>
-  <div class="d-flex flex-column flex-grow-1 position-relative">
-    <div id="page-content">
-      <div class="container-fluid mt-4">
-        <router-outlet></router-outlet>
+<mat-toolbar>
+  <app-header [sidenav]="sidenav"></app-header>
+</mat-toolbar>
+<div>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav">
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content mat-elevation-z4">
+        <div class="d-flex flex-column flex-grow-1 position-relative">
+          <div id="page-content">
+            <div class="container-fluid mt-4">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <app-footer></app-footer>
-  </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <app-footer></app-footer>
 </div>
