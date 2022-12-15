@@ -1,3 +1,6 @@
 .navbar a{
   color: var(--white-color);
 }
+.info{
+  font-size: 14px;
+}

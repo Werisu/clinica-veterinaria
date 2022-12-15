@@ -42,3 +42,9 @@ mat-divider {
   margin-bottom: 16px;
   background-color: rgba(255, 255, 255, 0.5);
 }
+.menu-button:hover {
+  background-color: var(--secundary-color) !important;
+}
+.menu-button.active{
+  background-color: var(--primary-color) !important;
+}

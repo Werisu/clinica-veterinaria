@@ -1,0 +1,24 @@
+<div class="d-flex flex-column align-items-center">
+  <div class="title">
+    <h2>Pacientes</h2>
+  </div>
+
+  <div class="d-flex flex-column align-items-center">
+    <div class="input-group rounded">
+      <input type="search" class="form-control" placeholder="Search" aria-label="Search"
+        aria-describedby="search-addon" />
+      <span class="input-group-text border-0 bg-primary" id="search-addon">
+        <span class="material-icons text-white">search</span>
+      </span>
+    </div>
+    <small class="text-muted my-2">128 Usuários Cadastrados</small>
+  </div>
+</div>
+
+<div class="acoes my-4">
+  <button class="btn btn-success add-user d-flex" (click)="openDialog()">
+    <span class="material-icons">add</span>
+    <span>Novo paciente</span>
+  </button>
+</div>
+<app-patient-table></app-patient-table>

@@ -1,42 +1,3 @@
-<!-- <section>
-<div>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="d-flex justify-content-center my-2"><img src="assets/images/icon-sidebar.svg" alt="Ícone da navegação lateral"></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex gap-2 align-items-end" aria-current="page" [routerLink]="['/painel/inicio']" routerLinkActive="active" >
-        <span class="material-icons">home</span>
-        Inicio
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex gap-2 align-items-end" aria-current="page" href="" routerLinkActive="active" >
-        <span class="material-icons">pets</span>
-        Paciente
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex gap-2 align-items-end" href="" routerLinkActive="active" >
-        <span class="material-icons">monitor_heart</span>
-        Ficha Clinica CPA
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex gap-2 align-items-end" routerLink="/painel/cadastro-de-usuarios" routerLinkActive="active" >
-        <span class="material-icons">person_add</span>
-        Cadastro de usuários
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex gap-2 align-items-end">
-        <span class="material-icons">logout</span>
-        Sair
-      </a>
-    </li>
-  </ul>
-</div>
-</section> -->
 <img class="avatar" src="assets/images/icon-sidebar.svg" alt="Ícone da navegação lateral">
 <h4 class="name">Clínica Veterinária</h4>
 <p class="designation">aux for tecnology</p>
@@ -47,21 +8,17 @@
   <span class="material-icons">home</span>
   <span>Inicio</span>
 </button>
-<button mat-button class="menu-button">
+<button mat-button class="menu-button" [routerLink]="['/painel/cadastro-de-pacientes']" routerLinkActive="active">
   <span class="material-icons">pets</span>
-  <span>Paciente</span>
+  <span>Pacientes</span>
 </button>
 <button mat-button class="menu-button">
   <span class="material-icons">monitor_heart</span>
-  <span>Ficha Clinica CPA</span>
-</button>
-<button mat-button class="menu-button">
-  <span class="material-icons">home</span>
-  <span>Inicio</span>
+  <span>Fichas Clinicas CPA</span>
 </button>
 <button mat-button class="menu-button" routerLink="/painel/cadastro-de-usuarios" routerLinkActive="active">
   <span class="material-icons">person_add</span>
-  <span>Cadastro de usuários</span>
+  <span>Usuários</span>
 </button>
 
 <mat-divider></mat-divider>

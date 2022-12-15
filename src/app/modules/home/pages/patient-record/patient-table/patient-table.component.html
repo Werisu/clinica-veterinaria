@@ -3,10 +3,10 @@
   <thead class="table-dark-a4t">
     <tr>
       <th class="rounded-start" style="width: 5%;" scope="col">#</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Data de nascimento</th>
-      <th scope="col">CPF</th>
-      <th scope="col">Função</th>
+      <th scope="col">Paciente</th>
+      <th scope="col">Idade</th>
+      <th scope="col">Especie</th>
+      <th scope="col">Sexo</th>
       <th class="rounded-end text-center" scope="col">Açoes</th>
     </tr>
   </thead>
@@ -14,9 +14,9 @@
     <tr *ngFor="let paciente of pacientes; let i = index">
       <th scope="row">{{ i+1 }}</th>
       <td>{{ paciente.nome }}</td>
-      <td>{{ paciente.dataNasc.toLocaleDateString() }}</td>
-      <td>{{ paciente.cpf }}</td>
-      <td>{{ paciente.funcao }}</td>
+      <td>{{ paciente.idade }} anos</td>
+      <td>{{ paciente.especie }}</td>
+      <td>{{ paciente.sexo }}</td>
       <td class="d-flex justify-content-center">
         <button class="btn btn-primary d-flex"><span class="material-icons">edit</span></button>
       </td>

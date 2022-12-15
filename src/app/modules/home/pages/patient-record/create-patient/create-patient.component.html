@@ -1,0 +1,45 @@
+<div class="d-flex flex-column align-items-center" mat-dialog-title>
+  <span class="material-icons person-icon">person_add</span>
+  <span>Cadastro de paciente</span>
+</div>
+<mat-dialog-content class="mat-typography">
+  <h3 class="text-center">Preencha os campos abaixo para cadastrar um novo usuário</h3>
+  <form [formGroup]="formulario" class="row g-3 new-registration-form">
+    <div class="col-md-8">
+      <label for="nome" class="form-label">Nome</label>
+      <input autocomplete="off" formControlName="nome" type="text" class="form-control" id="nome" value="Mark" required>
+      <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched" class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label for="idade" class="form-label">Idade</label>
+      <input autocomplete="off" formControlName="idade" type="number" class="form-control" id="idade" value="Mark" mask="CPF_CNPJ" required>
+      <div *ngIf="formulario.get('idade')?.errors?.['required'] && formulario.get('idade')?.touched" class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <label for="especie" class="form-label">E-mail</label>
+      <input autocomplete="off" formControlName="especie" type="text" class="form-control" id="especie" value="Mark" required>
+      <div *ngIf="formulario.get('especie')?.errors?.['required'] && formulario.get('especie')?.touched" class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label for="sexo" class="form-label">Sexo</label>
+      <select formControlName="sexo" class="form-select" id="sexo" aria-describedby="funcaoFeedback" required>
+        <option selected disabled value="">Escolha...</option>
+        <option>Macho</option>
+        <option>Fême</option>
+      </select>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="d-flex" align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" class="btn btn-success text-white" cdkFocusInitial [disabled]="formulario.invalid">Cadastrar</button>
+</mat-dialog-actions>
