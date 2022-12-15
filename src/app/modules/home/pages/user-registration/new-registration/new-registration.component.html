@@ -1,0 +1,66 @@
+<div class="d-flex flex-column align-items-center" mat-dialog-title>
+  <span class="material-icons person-icon">person_add</span>
+  <span>Cadastro de usuário</span>
+</div>
+<mat-dialog-content class="mat-typography">
+  <h3 class="text-center">Preencha os campos abaixo para cadastrar um novo usuário</h3>
+  <form [formGroup]="formulario" class="row g-3 new-registration-form">
+    <div class="col-md-8">
+      <label for="nome" class="form-label">Nome Completo</label>
+      <input autocomplete="off" formControlName="nome" type="text" class="form-control" id="nome" value="Mark" required>
+      <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched" class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label for="cpf" class="form-label" (click)="showMe()">CPF</label>
+      <input autocomplete="off" formControlName="cpf" type="text" class="form-control" id="cpf" value="Mark" mask="CPF_CNPJ" required>
+      <div *ngIf="formulario.get('cpf')?.errors?.['required'] && formulario.get('cpf')?.touched" class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+      <div *ngIf="formulario.get('cpf')?.errors?.['cpf-cnpj'] && formulario.get('cpf')?.touched" class="ng-invalid-feedback">
+        CPF inválido.
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <label for="email" class="form-label">E-mail</label>
+      <input autocomplete="off" formControlName="email" type="text" class="form-control" id="email" value="Mark" required>
+      <div *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched" class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+      <div *ngIf="formulario.get('email')?.errors?.['email'] && formulario.get('email')?.touched" class="ng-invalid-feedback">
+        E-mail inválido.
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label for="funcao" class="form-label">Função</label>
+      <select class="form-select" id="funcao" aria-describedby="funcaoFeedback" required>
+        <option selected disabled value="">Escolha...</option>
+        <option>...</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label for="senha" class="form-label">Senha</label>
+      <input autocomplete="off" formControlName="senha" type="password" class="form-control" id="senha" value="Mark" required>
+      <div *ngIf="formulario.get('senha')?.errors?.['required'] && formulario.get('senha')?.touched" class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="confirmarSenha" class="form-label">Confirme a senha</label>
+      <input autocomplete="off" formControlName="confirmarSenha" type="password" class="form-control" id="confirmarSenha" value="Mark" required>
+      <div *ngIf="formulario.get('confirmarSenha')?.errors?.['required'] && formulario.get('confirmarSenha')?.touched" class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="d-flex" align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" class="btn btn-success text-white" cdkFocusInitial [disabled]="formulario.invalid">Cadastrar</button>
+</mat-dialog-actions>

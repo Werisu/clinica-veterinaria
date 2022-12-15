@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from "@angular/cdk/layout";
 
@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
-  constructor(private observer: BreakpointObserver) { }
+  constructor(private observer: BreakpointObserver, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.sidenav.open();
       }
     });
+    this.cdr.detectChanges();
   }
 
 }
