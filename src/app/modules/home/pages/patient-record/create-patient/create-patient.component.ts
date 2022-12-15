@@ -15,9 +15,14 @@ export class CreatePatientComponent {
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
       nome: ['', Validators.required],
-      idade: ['', Validators.required],
       especie: ['', Validators.required],
-      sexo: ['', Validators.required]
+      fc: ['', Validators.required],
+      idade: ['', Validators.required],
+      sexo: ['', Validators.required],
+      raca: ['', Validators.required],
+      cor: ['', Validators.required],
+      peso: ['', Validators.required],
+      proprietario: ['', Validators.required]
     })
   }
 }

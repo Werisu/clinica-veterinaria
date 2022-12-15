@@ -1,3 +1,4 @@
+import { MatDividerModule } from '@angular/material/divider';
 import { CreatePatientComponent } from './create-patient/create-patient.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PatientTableComponent } from './patient-table/patient-table.component';
@@ -27,7 +28,8 @@ const maskConfig: Partial<IConfig> = {
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
   ]
 })
 export class PatientRecordModule { }
