@@ -61,19 +61,19 @@
 
   <div class="panels-container">
     <div class="panel left-panel">
-      <div class="content" *ngIf="false">
-        <h3>Esqueceu a senha ?</h3>
-        <p>
+      <div class="content">
+        <h3 *ngIf="false">Esqueceu a senha ?</h3>
+        <p *ngIf="false">
           Não perca mais tempo! Comece agora a ter mais agilidade e menos processos na sua clínica veterinária.
         </p>
-        <button class="btn transparent" id="sign-up-btn" (click)="signUp()">
+        <button class="btn transparent" id="sign-up-btn" (click)="signUp()" *ngIf="false">
           Cadastre-se
         </button>
       </div>
       <img src="assets/images/log.svg" class="image" alt="" />
     </div>
     <div class="panel right-panel">
-      <div class="content" *ngIf="false">
+      <div class="content">
         <h3>Quem somos ?</h3>
         <p>
           Somos uma startup com foco no desenvolvimento de soluções inteligentes para clínicas veterinárias.
