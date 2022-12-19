@@ -37,11 +37,11 @@
 
     <div class="col-md-4">
       <label for="funcao" class="form-label">Função</label>
-      <select class="form-select" id="funcao" aria-describedby="funcaoFeedback" required>
+      <select formControlName="funcao" class="form-select" id="funcao" aria-describedby="funcaoFeedback" required>
         <option selected disabled value="">Escolha...</option>
-        <option>Doutor</option>
-        <option>Enfermeiro</option>
-        <option>Administrador</option>
+        <option value="doutor(a)">Doutor</option>
+        <option value="enfermeiro(a)">Enfermeiro</option>
+        <option value="administrador(a)">Administrador</option>
       </select>
     </div>
 
@@ -62,7 +62,7 @@
     </div>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions class="d-flex" align="end">
-  <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button [mat-dialog-close]="true" class="btn btn-success text-white" cdkFocusInitial [disabled]="formulario.invalid">Cadastrar</button>
+<mat-dialog-actions class="d-flex gap-2" align="end">
+  <button mat-dialog-close (click)="onNoClick()" class="btn btn-secondary">Cancelar</button>
+  <button [mat-dialog-close]="formulario" class="btn btn-success text-white" cdkFocusInitial [disabled]="formulario.invalid">Cadastrar</button>
 </mat-dialog-actions>

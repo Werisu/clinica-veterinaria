@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { User } from './../../../../../core/interfaces/user';
+import { UserService } from './../../../../../core/services/user.service';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CpfCnpjValidator } from 'src/app/core/helpers/cpf-cnpj-validator';
 
 @Component({
@@ -10,7 +13,7 @@ import { CpfCnpjValidator } from 'src/app/core/helpers/cpf-cnpj-validator';
 export class NewRegistrationComponent implements OnInit {
   public formulario!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private dialogRef: MatDialogRef<NewRegistrationComponent>, @Inject(MAT_DIALOG_DATA) public data: any){}
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -20,11 +23,10 @@ export class NewRegistrationComponent implements OnInit {
       funcao: ['', Validators.required],
       senha: ['', Validators.required],
       confirmarSenha: ['', Validators.required]
-    })
+    });
   }
 
-  showMe(){
-    console.log(this.formulario.get('email')?.errors);
-
+  public onNoClick(){
+    this.dialogRef.close(false);
   }
 }

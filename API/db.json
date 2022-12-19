@@ -1,0 +1,58 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Wellysson Nascimento Rocha",
+      "cpf": "052.774.401-86",
+      "senha": "34125234",
+      "email": "werisu.dev@gmail.com",
+      "cargo": "Software Engineer",
+      "dataNasc": "1995-06-12T03:00:00.000Z"
+    },
+    {
+      "nome": "Luzia Renata Moraes",
+      "cpf": "20555320901",
+      "email": "luzia-moraes86@3cfast.com.br",
+      "funcao": "doutor",
+      "senha": "z9WXanhTYN",
+      "confirmarSenha": "z9WXanhTYN",
+      "id": 2
+    },
+    {
+      "nome": "Tiago Enrico Barbosa",
+      "cpf": "40179988280",
+      "email": "tiago_enrico_barbosa@gastrolight.com.br",
+      "funcao": "enfermeiro(a)",
+      "senha": "3yY38iwp9M",
+      "confirmarSenha": "3yY38iwp9M",
+      "id": 3
+    },
+    {
+      "nome": "Mário Sérgio Martins",
+      "cpf": "35707409602",
+      "email": "mario_martins@mectron.com.br",
+      "funcao": "administrador(a)",
+      "senha": "k3kZzHcCXW",
+      "confirmarSenha": "k3kZzHcCXW",
+      "id": 4
+    },
+    {
+      "nome": "Edson Danilo Marcelo Gomes",
+      "cpf": "40192294148",
+      "email": "edsondanilogomes@aquino.com.br",
+      "funcao": "doutor(a)",
+      "senha": "gaxTB3ed56",
+      "confirmarSenha": "gaxTB3ed56",
+      "id": 5
+    },
+    {
+      "nome": "Cauã Julio Ribeiro",
+      "cpf": "39081684817",
+      "email": "cauajulioribeiro@ppe.ufrj.br",
+      "funcao": "enfermeiro(a)",
+      "senha": "PBFm1DGM9R",
+      "confirmarSenha": "PBFm1DGM9R",
+      "id": 6
+    }
+  ]
+}
