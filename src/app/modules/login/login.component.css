@@ -16,7 +16,8 @@
 
 .signin-signup {
   position: absolute;
-  top: 50%;
+  /* top: 50%; */
+  top: 40%;
   transform: translate(-50%, -50%);
   left: 75%;
   width: 50%;
@@ -121,7 +122,7 @@ form.sign-in-form {
 
 .btn {
   width: 150px;
-  background-color: #5995fd;
+  /* background-color: #5995fd; */
   border: none;
   outline: none;
   height: 49px;
@@ -132,6 +133,9 @@ form.sign-in-form {
   margin: 10px 0;
   cursor: pointer;
   transition: 0.5s;
+}
+.btn-corlogo{
+  background-color: #5995fd;
 }
 
 .btn:hover {
@@ -264,7 +268,7 @@ form.sign-in-form {
   }
   .signin-signup {
     width: 100%;
-    top: 95%;
+    top: 80%;
     transform: translate(-50%, -100%);
     transition: 1s 0.8s ease-in-out;
   }
@@ -355,7 +359,7 @@ form.sign-in-form {
   }
 
   .container-auxfortech.sign-up-mode .signin-signup {
-    top: 5%;
+    top: 10%;
     transform: translate(-50%, 0);
   }
 }
@@ -384,4 +388,8 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
+}
+/* AUTOR: WELLYSSON | 19-12-2022 */
+.forgot-password{
+  cursor: pointer;
 }
