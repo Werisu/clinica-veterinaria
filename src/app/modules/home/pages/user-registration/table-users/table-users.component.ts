@@ -12,33 +12,6 @@ import { Users } from 'src/app/core/interfaces/user';
 export class TableUsersComponent implements AfterViewInit {
   @Input() users!: Users;
 
-  // public users = [
-  //   {
-  //     nome: 'Jane Cooper',
-  //     dataNasc: new Date('2000-01-30'),
-  //     cpf: '000.000.***-00',
-  //     funcao: 'Médico'
-  //   },
-  //   {
-  //     nome: 'Guy Hawkins',
-  //     dataNasc: new Date('2000-01-30'),
-  //     cpf: '000.000.***-00',
-  //     funcao: 'Auxiliar'
-  //   },
-  //   {
-  //     nome: 'Brooklyn Simmons',
-  //     dataNasc: new Date('2000-01-30'),
-  //     cpf: '000.000.***-00',
-  //     funcao: 'Médico'
-  //   },
-  //   {
-  //     nome: 'Jacob Jones',
-  //     dataNasc: new Date('2000-01-30'),
-  //     cpf: '000.000.***-00',
-  //     funcao: 'Médico'
-  //   }
-  // ];
-
   public moment = moment;
 
   public isBreak = false;

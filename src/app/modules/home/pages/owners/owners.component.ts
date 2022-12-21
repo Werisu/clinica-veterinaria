@@ -19,7 +19,7 @@ export class OwnersComponent {
   constructor(public dialog: MatDialog, private ownersService: OwnersService) { }
 
   ngOnInit(): void {
-    // this.getUsers();
+    this.getOwners();
   }
 
   openDialog() {
