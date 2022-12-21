@@ -8,15 +8,20 @@
   <span class="material-icons">home</span>
   <span>Inicio</span>
 </button>
-<button mat-button class="menu-button" [routerLink]="['/painel/cadastro-de-pacientes']" routerLinkActive="active">
+<button mat-button class="menu-button" [routerLink]="['/painel/pacientes']" routerLinkActive="active">
   <span class="material-icons">pets</span>
   <span>Pacientes</span>
+</button>
+<button mat-button class="menu-button" routerLink="/painel/proprietarios" routerLinkActive="active">
+  <span class="material-icons">diversity_1</span>
+  <span>Proprietários</span>
 </button>
 <button mat-button class="menu-button">
   <span class="material-icons">monitor_heart</span>
   <span>Fichas Clinicas CPA</span>
 </button>
-<button mat-button class="menu-button" routerLink="/painel/cadastro-de-usuarios" routerLinkActive="active">
+<mat-divider></mat-divider>
+<button mat-button class="menu-button" routerLink="/painel/usuarios" routerLinkActive="active">
   <span class="material-icons">person_add</span>
   <span>Usuários</span>
 </button>

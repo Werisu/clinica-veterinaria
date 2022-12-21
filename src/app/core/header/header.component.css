@@ -4,3 +4,10 @@
 .info{
   font-size: 14px;
 }
+.logout-button{
+  cursor: pointer;
+  color: #dc3545;
+}
+.logout-button:hover{
+  color: #bb2d3b;
+}

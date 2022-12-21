@@ -6,13 +6,13 @@
         <h2 class="title">Entrar</h2>
         <div class="input-field">
           <span class="material-icons">person</span>
-          <input type="text" placeholder="Nome de usuário" />
+          <input type="text" placeholder="Nome de usuário" name="userName" [(ngModel)]="usuario" />
         </div>
         <div class="input-field">
           <span class="material-icons">lock</span>
-          <input type="password" placeholder="Senha" />
+          <input type="password" placeholder="Senha" name="userPassword" [(ngModel)]="senha" />
         </div>
-        <input type="submit" value="Entrar" class="btn btn-primary btn-corlogo solid" />
+        <input value="Entrar" class="btn btn-primary btn-corlogo solid" (click)="login()" />
         <a class="forgot-password" (click)="signUp()">Esqueceu a senha?</a>
         <p class="social-text" *ngIf="false">Ou entre com plataformas sociais</p>
         <div class="social-media" *ngIf="false">

@@ -54,5 +54,14 @@
       "confirmarSenha": "PBFm1DGM9R",
       "id": 6
     }
+  ],
+  "proprietarios": [
+    {
+      "nome": "Marinete Pereira do Nascimento Rocha",
+      "cpf": "05277440186",
+      "email": "marinete.pereirarocha@gmail.com",
+      "telephone": "62992510372",
+      "id": 1
+    }
   ]
 }
