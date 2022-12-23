@@ -54,13 +54,11 @@
       "id": 12
     },
     {
+      "id": 14,
       "nome": "Kevin Iago Levi Brito",
       "cpf": "73719253783",
       "email": "kevin_iago_brito@oxiteno.com",
-      "funcao": "administrador(a)",
-      "senha": "34125234",
-      "confirmarSenha": "34125234",
-      "id": 14
+      "funcao": "administrador(a)"
     }
   ],
   "proprietarios": [
