@@ -7,7 +7,7 @@
   <form [formGroup]="formulario" class="row g-3 new-registration-form">
     <div class="col-md-1">
       <label for="id" class="form-label">ID</label>
-      <input autocomplete="off" formControlName="id" type="text" class="form-control" id="id" [disabled]="true">
+      <input [readOnly]="true" autocomplete="off" formControlName="id" type="text" class="form-control" id="id" [disabled]="true">
     </div>
 
     <div class="col-md-7">
@@ -48,6 +48,31 @@
         <option value="enfermeiro(a)">Enfermeiro</option>
         <option value="administrador(a)">Administrador</option>
       </select>
+    </div>
+
+    <mat-divider class="mt-4">Autenticação do Sistema</mat-divider>
+
+    <div>
+      <button mat-button (click)="disabledPassword ? disabledPassword = false : disabledPassword = true">Alterar Senha</button>
+    </div>
+
+    <div class="col-md-6" *ngIf="true">
+      <label for="senha" class="form-label">Senha</label>
+      <input [readOnly]="disabledPassword" autocomplete="off" formControlName="senha" type="password" class="form-control" id="senha">
+      <div *ngIf="formulario.get('senha')?.errors?.['required'] && formulario.get('senha')?.touched" class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-6" *ngIf="true">
+      <label for="confirmarSenha" class="form-label">Confirme a senha</label>
+      <input [readOnly]="disabledPassword" [attr.disabled]="disabledPassword ? true : null" autocomplete="off" formControlName="confirmarSenha" type="password" class="form-control" id="confirmarSenha">
+      <div *ngIf="formulario.get('confirmarSenha')?.errors?.['required'] && formulario.get('confirmarSenha')?.touched" class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+      <div *ngIf="formulario.get('confirmarSenha')?.errors?.['matching'] && formulario.get('confirmarSenha')?.hasError('matching')" class="ng-invalid-feedback">
+        Senhas não são iguais.
+      </div>
     </div>
   </form>
 </mat-dialog-content>

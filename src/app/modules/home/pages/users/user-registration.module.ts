@@ -1,3 +1,4 @@
+import { MatDividerModule } from '@angular/material/divider';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from "@angular/material/dialog";
@@ -26,6 +27,7 @@ const maskConfig: Partial<IConfig> = {
     UserRegistrationRoutingModule,
     MatDialogModule,
     MatButtonModule,
+    MatDividerModule,
     FormsModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(maskConfig)

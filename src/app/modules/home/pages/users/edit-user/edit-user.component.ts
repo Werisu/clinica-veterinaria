@@ -8,11 +8,12 @@ import { CpfCnpjValidator } from 'src/app/core/helpers/cpf-cnpj-validator';
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css']
+  styleUrls: ['./edit-user.component.css', '../new-registration/new-registration.component.css']
 })
 export class EditUserComponent {
   public formulario!: FormGroup;
   public user!: User;
+  public disabledPassword: boolean = true;
 
   constructor(private formBuilder: FormBuilder,private userService: UserService, private dialogRef: MatDialogRef<EditUserComponent>, @Inject(MAT_DIALOG_DATA) public data: User){}
 
@@ -22,7 +23,9 @@ export class EditUserComponent {
       nome: [this.data.nome, Validators.required],
       cpf: [this.data.cpf, [Validators.required, CpfCnpjValidator.validate]],
       email: [this.data.email, [Validators.required, Validators.email]],
-      funcao: [this.data.funcao, Validators.required]
+      funcao: [this.data.funcao, Validators.required],
+      senha: [this.data.senha],
+      confirmarSenha: [this.data.senha]
     });
   }
 

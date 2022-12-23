@@ -5,14 +5,18 @@
       "nome": "Wellysson Nascimento Rocha",
       "cpf": "052.774.401-86",
       "email": "werisu.dev@gmail.com",
-      "funcao": "administrador(a)"
+      "funcao": "administrador(a)",
+      "senha": "34125234",
+      "confirmarSenha": "34125234"
     },
     {
       "id": 2,
       "nome": "Luzia Renata Moraes",
       "cpf": "20555320901",
       "email": "luzia-moraes86@3cfast.com.br",
-      "funcao": "doutor(a)"
+      "funcao": "doutor(a)",
+      "senha": null,
+      "confirmSenha": null
     },
     {
       "id": 3,
@@ -45,13 +49,12 @@
       "id": 6
     },
     {
+      "id": 12,
       "nome": "Jorge Thomas Pinto",
       "cpf": "29978688749",
       "email": "jorge-pinto72@corpoclinica.com.br",
       "funcao": "enfermeiro(a)",
-      "senha": "123",
-      "confirmarSenha": "123",
-      "id": 12
+      "senha": "123"
     },
     {
       "id": 14,
