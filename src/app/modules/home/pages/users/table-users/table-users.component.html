@@ -41,3 +41,51 @@
     </tbody>
   </table>
 </div>
+
+<form *ngIf="false">
+	<div class="mb-3 row">
+		<label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
+		<div class="col-xs-3 col-sm-auto">
+			<input
+				id="table-complete-search"
+				type="text"
+				class="form-control"
+				name="searchTerm"
+				[(ngModel)]="userService.searchTerm"
+			/>
+		</div>
+		<span class="col col-form-label" *ngIf="userService.loading$ | async">Loading...</span>
+	</div>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col" sortable="nome" (sort)="onSort($event)">Country</th>
+				<th scope="col" sortable="cpf" (sort)="onSort($event)">Area</th>
+				<th scope="col" sortable="funcao" (sort)="onSort($event)">Population</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let user of users$ | async">
+				<th scope="row">{{ user.id }}</th>
+				<td>
+					<ngb-highlight [result]="user.nome" [term]="userService.searchTerm"></ngb-highlight>
+				</td>
+				<td><ngb-highlight [result]="user.cpf" [term]="userService.searchTerm"></ngb-highlight></td>
+				<td><ngb-highlight [result]="user.funcao" [term]="userService.searchTerm"></ngb-highlight></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="d-flex justify-content-between p-2">
+		<ngb-pagination [collectionSize]="(total$ | async)!" [(page)]="userService.page" [pageSize]="userService.pageSize">
+		</ngb-pagination>
+
+		<select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="userService.pageSize">
+			<option [ngValue]="2">2 items per page</option>
+			<option [ngValue]="4">4 items per page</option>
+			<option [ngValue]="6">6 items per page</option>
+		</select>
+	</div>
+</form>

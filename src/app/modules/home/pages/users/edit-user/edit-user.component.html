@@ -58,7 +58,7 @@
 
     <div class="col-md-6" *ngIf="true">
       <label for="senha" class="form-label">Senha</label>
-      <input [readOnly]="disabledPassword" autocomplete="off" formControlName="senha" type="password" class="form-control" id="senha">
+      <input [readOnly]="disabledPassword" [ngClass]="{'disabledPass' : disabledPassword}" autocomplete="off" formControlName="senha" type="password" class="form-control" id="senha">
       <div *ngIf="formulario.get('senha')?.errors?.['required'] && formulario.get('senha')?.touched" class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -66,7 +66,7 @@
 
     <div class="col-md-6" *ngIf="true">
       <label for="confirmarSenha" class="form-label">Confirme a senha</label>
-      <input [readOnly]="disabledPassword" [attr.disabled]="disabledPassword ? true : null" autocomplete="off" formControlName="confirmarSenha" type="password" class="form-control" id="confirmarSenha">
+      <input [readOnly]="disabledPassword" [ngClass]="{'disabledPass' : disabledPassword}" [attr.disabled]="disabledPassword ? true : null" autocomplete="off" formControlName="confirmarSenha" type="password" class="form-control" id="confirmarSenha">
       <div *ngIf="formulario.get('confirmarSenha')?.errors?.['required'] && formulario.get('confirmarSenha')?.touched" class="ng-invalid-feedback">
         Campo obrigatório.
       </div>

@@ -1,6 +1,7 @@
+import { UserService } from './../../../../core/services/user.service';
 import { MatDividerModule } from '@angular/material/divider';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { MatDialogModule } from "@angular/material/dialog";
 import { UserRegistrationRoutingModule } from './user-registration-routing.module';
 import { UserRegistrationComponent } from './user-registration.component';
@@ -9,7 +10,9 @@ import { NewRegistrationComponent } from './new-registration/new-registration.co
 import { MatButtonModule } from "@angular/material/button";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgxMaskModule, IConfig } from 'ngx-mask';
-import { EditUserComponent } from './edit-user/edit-user.component'
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdSortableHeader } from '../../../../core/directives/sortable.directive';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -30,10 +33,15 @@ const maskConfig: Partial<IConfig> = {
     MatDividerModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskModule.forRoot(maskConfig)
+    DecimalPipe,
+    NgxMaskModule.forRoot(maskConfig),
+    NgbTypeaheadModule,
+		NgbdSortableHeader,
+		NgbPaginationModule
   ],
   exports: [
     UserRegistrationComponent
-  ]
+  ],
+  providers: [UserService, DecimalPipe]
 })
 export class UserRegistrationModule { }

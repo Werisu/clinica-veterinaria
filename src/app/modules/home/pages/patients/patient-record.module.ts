@@ -10,6 +10,9 @@ import { PatientRecordComponent } from './patient-record.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatTableModule } from '@angular/material/table';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -29,7 +32,10 @@ const maskConfig: Partial<IConfig> = {
     ReactiveFormsModule,
     MatButtonModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule
   ]
 })
 export class PatientRecordModule { }

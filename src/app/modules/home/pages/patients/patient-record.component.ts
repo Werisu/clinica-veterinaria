@@ -1,5 +1,6 @@
+import { PatientTableComponent } from './patient-table/patient-table.component';
 import { CreatePatientComponent } from './create-patient/create-patient.component';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -8,6 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./patient-record.component.css']
 })
 export class PatientRecordComponent {
+  @ViewChild(PatientTableComponent) table!: PatientTableComponent;
+
   constructor(public dialog: MatDialog) { }
 
   openDialog() {

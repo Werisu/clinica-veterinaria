@@ -8,6 +8,7 @@ import { OwnersComponent } from './owners.component';
 import { OwnersTableComponent } from './owners-table/owners-table.component';
 import { CreateOwnersComponent } from './create-owners/create-owners.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { EditOwnersComponent } from './edit-owners/edit-owners.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -17,7 +18,8 @@ const maskConfig: Partial<IConfig> = {
   declarations: [
     OwnersComponent,
     OwnersTableComponent,
-    CreateOwnersComponent
+    CreateOwnersComponent,
+    EditOwnersComponent
   ],
   imports: [
     CommonModule,

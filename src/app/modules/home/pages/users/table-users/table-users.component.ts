@@ -6,24 +6,33 @@ import {
   Component,
   Input,
   OnInit,
+  QueryList,
+  ViewChildren,
 } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { User, Users } from 'src/app/core/interfaces/user';
 import { UserService } from 'src/app/core/services/user.service';
 import { NewRegistrationComponent } from '../new-registration/new-registration.component';
 import Swal from 'sweetalert2';
+import { NgbdSortableHeader, SortEvent } from 'src/app/core/directives/sortable.directive';
+import { Observable, debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-table-users',
   templateUrl: './table-users.component.html',
-  styleUrls: ['./table-users.component.css'],
+  styleUrls: ['./table-users.component.css']
 })
 export class TableUsersComponent implements OnInit, AfterViewInit {
+  @ViewChildren(NgbdSortableHeader) headers!: QueryList<NgbdSortableHeader>;
+  @Input() searchInput!: FormControl<any>;
   public user!: User;
   public formulario!: FormGroup;
   public users: Users = [];
+  public filtroPeloInput: Users = [];
+  public total$!: Observable<number>;
+  public users$!: Observable<Users>;
 
   public moment = moment;
 
@@ -31,10 +40,13 @@ export class TableUsersComponent implements OnInit, AfterViewInit {
 
   constructor(
     public dialog: MatDialog,
-    private userService: UserService,
+    public userService: UserService,
     private observer: BreakpointObserver,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) {
+    this.users$ = userService.users$;
+    this.total$ = userService.total$;
+  }
 
   ngOnInit(): void {
     this.getUsers();
@@ -48,6 +60,18 @@ export class TableUsersComponent implements OnInit, AfterViewInit {
         this.isBreak = false;
       }
     });
+
+    this.searchInput.valueChanges.pipe(
+      debounceTime(200),
+      tap(() => {
+        console.log('Fluxo do filtro');
+      }),
+      tap(console.log),
+      filter((valorDigitado) => valorDigitado.length >= 3 || !valorDigitado.length),
+      distinctUntilChanged(),
+      switchMap((valorDigitado) => this.userService.getAll(valorDigitado)),
+      tap(console.log)
+    ).subscribe((users) => this.users = users);
 
     this.cdr.detectChanges();
   }
@@ -141,4 +165,16 @@ export class TableUsersComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+  onSort({ column, direction }: any) {
+		// resetting other headers
+		this.headers.forEach((header) => {
+			if (header.sortable !== column) {
+				header.direction = '';
+			}
+		});
+
+		this.userService.sortColumn = column;
+		this.userService.sortDirection = direction;
+	}
 }

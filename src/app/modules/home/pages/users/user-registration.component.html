@@ -6,7 +6,7 @@
   <div class="d-flex flex-column align-items-center">
     <div class="input-group rounded">
       <input type="search" class="form-control" placeholder="Pesquisar" aria-label="Search"
-        aria-describedby="search-addon" />
+        aria-describedby="search-addon" [formControl]="searchInput" />
       <span class="input-group-text border-0 bg-primary" id="search-addon">
         <span class="material-icons text-white">search</span>
       </span>
@@ -15,4 +15,4 @@
   </div>
 </div>
 
-<app-table-users></app-table-users>
+<app-table-users [searchInput]="searchInput"></app-table-users>

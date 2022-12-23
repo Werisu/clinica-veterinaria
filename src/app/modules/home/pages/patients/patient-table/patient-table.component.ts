@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
 import * as moment from 'moment';
 
 @Component({
@@ -7,6 +8,7 @@ import * as moment from 'moment';
   styleUrls: ['./patient-table.component.css']
 })
 export class PatientTableComponent implements OnInit {
+  @Input() inputHTML: any;
 
   public pacientes = [
     {
@@ -40,6 +42,14 @@ export class PatientTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acoes'];
+  dataSource = new MatTableDataSource(this.pacientes);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

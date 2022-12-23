@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { User, Users } from './../../../../core/interfaces/user';
 import { UserService } from './../../../../core/services/user.service';
 import { NewRegistrationComponent } from './new-registration/new-registration.component';
@@ -11,6 +11,8 @@ import { MatDialog } from "@angular/material/dialog";
   styleUrls: ['./user-registration.component.css']
 })
 export class UserRegistrationComponent implements OnInit {
+
+  public searchInput = new FormControl();
 
   constructor() { }
 

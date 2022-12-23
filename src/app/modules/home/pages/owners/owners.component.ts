@@ -12,42 +12,10 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./owners.component.css']
 })
 export class OwnersComponent {
-  public owner!: Owner;
-  public formulario!: FormGroup;
-  public owners: Owners = [];
 
-  constructor(public dialog: MatDialog, private ownersService: OwnersService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getOwners();
-  }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(CreateOwnersComponent, {
-      width: '50vw',
-      data: this.formulario
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-
-      if(typeof(result) == 'object'){
-        this.owner = result.getRawValue() as Owner;
-        this.ownersService.Post(this.owner).subscribe();
-
-        this.getOwners();
-      }
-    });
-  }
-
-  public getOwners(){
-    this.ownersService.GetAll().subscribe({
-      next: owners => {
-        this.owners = owners;
-      },
-      error: err => {
-        console.error(err);
-      }
-    })
   }
 }

@@ -7,6 +7,12 @@ import { Observable } from 'rxjs';
 
 const API = `${environment.api}/proprietarios`;
 
+/* */
+interface SearchResult {
+
+}
+/* */
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,11 +20,19 @@ export class OwnersService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public GetAll(): Observable<Owners>{
+  public getAll(): Observable<Owners>{
     return this.httpClient.get<Owners>(API);
   }
 
-  public Post(payload: Owner): Observable<Owner>{
+  public post(payload: Owner): Observable<Owner>{
     return this.httpClient.post<Owner>(API, payload);
+  }
+
+  public put(payload: Owner){
+    return this.httpClient.put(`${API}/${payload.id}`, payload);
+  }
+
+  public delete(id: number){
+    return this.httpClient.delete(`${API}/${id}`);
   }
 }
