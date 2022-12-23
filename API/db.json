@@ -3,7 +3,7 @@
     {
       "id": 1,
       "nome": "Wellysson Nascimento Rocha",
-      "cpf": "05277440186",
+      "cpf": "052.774.401-86",
       "email": "werisu.dev@gmail.com",
       "funcao": "administrador(a)",
       "senha": "34125234",
@@ -62,6 +62,15 @@
       "cpf": "73719253783",
       "email": "kevin_iago_brito@oxiteno.com",
       "funcao": "administrador(a)"
+    },
+    {
+      "nome": "Rafaela Melissa Eduarda Almada",
+      "cpf": "41127793136",
+      "email": "rafaela-almada87@ig.com",
+      "funcao": "enfermeiro(a)",
+      "senha": "123",
+      "confirmarSenha": "123",
+      "id": 15
     }
   ],
   "proprietarios": [
@@ -78,6 +87,13 @@
       "cpf": "62525541200",
       "email": "mariaeduardadossantos551@gmail.com",
       "telephone": "63992949666"
+    },
+    {
+      "nome": "Cláudio Emanuel Viana",
+      "cpf": "03183572672",
+      "email": "claudio.emanuel.viana@senhorasdaarte.com.br",
+      "telephone": "86980174785",
+      "id": 3
     }
   ]
 }

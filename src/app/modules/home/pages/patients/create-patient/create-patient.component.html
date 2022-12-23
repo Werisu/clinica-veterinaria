@@ -95,7 +95,7 @@
 
     <div class="col-md-2">
       <label for="peso" class="form-label">Peso</label>
-      <input autocomplete="off" formControlName="peso" mask="0.00" type="text" class="form-control" id="peso"
+      <input autocomplete="off" formControlName="peso" mask="0.00" [dropSpecialCharacters]="false" type="text" class="form-control" id="peso"
         required placeholder="Informar peso em Kg">
       <div *ngIf="formulario.get('peso')?.errors?.['required'] && formulario.get('peso')?.touched"
         class="ng-invalid-feedback">

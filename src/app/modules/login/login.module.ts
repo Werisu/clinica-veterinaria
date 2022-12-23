@@ -1,9 +1,10 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
+import { UserService } from 'src/app/core/services/user.service';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { LoginComponent } from './login.component';
     CommonModule,
     LoginRoutingModule,
     FormsModule
-  ]
+  ],
+  providers: [UserService, DecimalPipe]
 })
 export class LoginModule { }

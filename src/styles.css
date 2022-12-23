@@ -19,3 +19,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
 }
+.mat-mdc-header-row{
+  background-color: var(--secundary-color) !important;
+  border-radius: 8px;
+}
+.mat-mdc-header-row .mat-mdc-header-cell {
+  color: white;
+}

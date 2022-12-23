@@ -7,6 +7,7 @@ import {
   Input,
   OnInit,
   QueryList,
+  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -18,6 +19,8 @@ import { NewRegistrationComponent } from '../new-registration/new-registration.c
 import Swal from 'sweetalert2';
 import { NgbdSortableHeader, SortEvent } from 'src/app/core/directives/sortable.directive';
 import { Observable, debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-table-users',
@@ -26,7 +29,9 @@ import { Observable, debounceTime, distinctUntilChanged, filter, switchMap, tap 
 })
 export class TableUsersComponent implements OnInit, AfterViewInit {
   @ViewChildren(NgbdSortableHeader) headers!: QueryList<NgbdSortableHeader>;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() searchInput!: FormControl<any>;
+  @Input() inputHTML: any;
   public user!: User;
   public formulario!: FormGroup;
   public users: Users = [];
@@ -37,6 +42,9 @@ export class TableUsersComponent implements OnInit, AfterViewInit {
   public moment = moment;
 
   public isBreak = false;
+
+  displayedColumns: string[] = ['ID', 'nome', 'cpf', 'funcao', 'acoes'];
+  dataSource = new MatTableDataSource(this.users);
 
   constructor(
     public dialog: MatDialog,
@@ -53,6 +61,13 @@ export class TableUsersComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.paginator._intl.itemsPerPageLabel = 'Itens por página';
+    this.paginator._intl.nextPageLabel = 'Próximo';
+    this.paginator._intl.previousPageLabel = 'Anterior';
+    this.paginator._intl.firstPageLabel = 'Primeira página'
+    this.paginator._intl.lastPageLabel = 'Última página'
+    this.dataSource.paginator = this.paginator;
+
     this.observer.observe(['(max-width: 500px)']).subscribe((res) => {
       if (res.matches) {
         this.isBreak = true;
@@ -74,6 +89,11 @@ export class TableUsersComponent implements OnInit, AfterViewInit {
     ).subscribe((users) => this.users = users);
 
     this.cdr.detectChanges();
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   openDialog(mode: 'edit' | 'create', user?: User) {
@@ -109,6 +129,7 @@ export class TableUsersComponent implements OnInit, AfterViewInit {
     this.userService.getAll().subscribe({
       next: (users) => {
         this.users = users;
+        this.dataSource.data = users
       },
       error: (err) => {
         console.error(err);

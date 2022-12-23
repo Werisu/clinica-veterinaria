@@ -20,7 +20,7 @@
 
     <div class="col-md-4">
       <label for="cpf" class="form-label">CPF</label>
-      <input autocomplete="off" formControlName="cpf" type="text" class="form-control" id="cpf" mask="CPF_CNPJ" required>
+      <input autocomplete="off" formControlName="cpf" type="text" class="form-control" id="cpf" mask="CPF_CNPJ" [dropSpecialCharacters]="false" required>
       <div *ngIf="formulario.get('cpf')?.errors?.['required'] && formulario.get('cpf')?.touched" class="ng-invalid-feedback">
         Campo obrigatório.
       </div>

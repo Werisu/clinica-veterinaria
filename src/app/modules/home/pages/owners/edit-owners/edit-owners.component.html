@@ -15,7 +15,7 @@
 
     <div class="col-md-4">
       <label for="cpf" class="form-label">CPF</label>
-      <input autocomplete="off" formControlName="cpf" type="text" class="form-control" id="cpf" mask="CPF_CNPJ" required>
+      <input autocomplete="off" formControlName="cpf" type="text" class="form-control" id="cpf" mask="CPF_CNPJ" [dropSpecialCharacters]="false" required>
       <div *ngIf="formulario.get('cpf')?.errors?.['required'] && formulario.get('cpf')?.touched" class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -37,7 +37,7 @@
 
     <div class="col-md-4">
       <label for="telephone" class="form-label">Celular</label>
-      <input autocomplete="off" formControlName="telephone" type="text" class="form-control" id="telephone" mask="(00) 00000-0000" required>
+      <input autocomplete="off" formControlName="telephone" type="text" class="form-control" id="telephone" mask="(00) 00000-0000" [dropSpecialCharacters]="false" required>
       <div *ngIf="formulario.get('telephone')?.errors?.['required'] && formulario.get('telephone')?.touched" class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -46,5 +46,5 @@
 </mat-dialog-content>
 <mat-dialog-actions class="d-flex gap-2" align="end">
   <button mat-dialog-close (click)="onNoClick()" class="btn btn-secondary">Cancelar</button>
-  <button (click)="put()" class="btn btn-success text-white" cdkFocusInitial [disabled]="formulario.invalid">Cadastrar</button>
+  <button (click)="put()" class="btn btn-success text-white" cdkFocusInitial [disabled]="formulario.invalid">Atualizar</button>
 </mat-dialog-actions>

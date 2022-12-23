@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import * as moment from 'moment';
 
@@ -7,8 +8,10 @@ import * as moment from 'moment';
   templateUrl: './patient-table.component.html',
   styleUrls: ['./patient-table.component.css']
 })
-export class PatientTableComponent implements OnInit {
+export class PatientTableComponent implements OnInit, AfterViewInit {
   @Input() inputHTML: any;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   public pacientes = [
     {
@@ -42,6 +45,15 @@ export class PatientTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    this.paginator._intl.itemsPerPageLabel = 'Itens por página';
+    this.paginator._intl.nextPageLabel = 'Próximo';
+    this.paginator._intl.previousPageLabel = 'Anterior';
+    this.paginator._intl.firstPageLabel = 'Primeira página'
+    this.paginator._intl.lastPageLabel = 'Última página'
+    this.dataSource.paginator = this.paginator;
   }
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acoes'];

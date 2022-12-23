@@ -95,4 +95,10 @@
       <td class="mat-cell" colspan="4">No data matching the filter "{{inputHTML.value}}"</td>
     </tr>
   </table>
+
+  <mat-paginator [pageSizeOptions]="[2, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements"
+                 >
+  </mat-paginator>
 </div>

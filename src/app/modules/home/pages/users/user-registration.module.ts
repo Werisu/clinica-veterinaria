@@ -13,6 +13,9 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdSortableHeader } from '../../../../core/directives/sortable.directive';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -37,7 +40,10 @@ const maskConfig: Partial<IConfig> = {
     NgxMaskModule.forRoot(maskConfig),
     NgbTypeaheadModule,
 		NgbdSortableHeader,
-		NgbPaginationModule
+		NgbPaginationModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports: [
     UserRegistrationComponent
