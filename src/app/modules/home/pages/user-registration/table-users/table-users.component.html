@@ -1,3 +1,10 @@
+<div class="acoes my-4">
+  <button class="btn btn-success add-user d-flex" (click)="openDialog('create')">
+    <span class="material-icons">add</span>
+    <span>Novo usuário</span>
+  </button>
+</div>
+
 <div class="table-responsive rounded-start rounded-end">
   <table class="table table-bordered table-striped table-hover align-middle">
     <caption>
@@ -15,7 +22,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let user of users; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
+        <th scope="row">{{ user.id }}</th>
         <td>{{ user.nome }}</td>
         <td *ngIf="!isBreak">
           {{ moment(user.dataNasc).toDate().toLocaleDateString() }}
@@ -23,14 +30,11 @@
         <td *ngIf="!isBreak">{{ user.cpf }}</td>
         <td>{{ user.funcao }}</td>
         <td class="d-flex gap-2 justify-content-center">
-          <button class="btn btn-primary d-flex">
+          <button class="btn btn-primary d-flex" (click)="openDialog('edit', user)">
             <span class="material-icons">edit</span>
           </button>
-          <button class="btn btn-primary d-flex">
-            <span class="material-icons">visibility</span>
-          </button>
-          <button class="btn btn-primary d-flex">
-            <span class="material-icons">print</span>
+          <button class="btn btn-danger d-flex">
+            <span class="material-icons" (click)="deleteUser(user)">delete</span>
           </button>
         </td>
       </tr>

@@ -1,7 +1,7 @@
 import { User } from './../../../../../core/interfaces/user';
 import { UserService } from './../../../../../core/services/user.service';
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CpfCnpjValidator } from 'src/app/core/helpers/cpf-cnpj-validator';
 
@@ -11,9 +11,12 @@ import { CpfCnpjValidator } from 'src/app/core/helpers/cpf-cnpj-validator';
   styleUrls: ['./new-registration.component.css']
 })
 export class NewRegistrationComponent implements OnInit {
-  public formulario!: FormGroup;
+  @Output() edited = EventEmitter<boolean>;
 
-  constructor(private formBuilder: FormBuilder, private dialogRef: MatDialogRef<NewRegistrationComponent>, @Inject(MAT_DIALOG_DATA) public data: any){}
+  public formulario!: FormGroup;
+  public user!: User;
+
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private dialogRef: MatDialogRef<NewRegistrationComponent>, @Inject(MAT_DIALOG_DATA) public data: any){}
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -22,11 +25,42 @@ export class NewRegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       funcao: ['', Validators.required],
       senha: ['', Validators.required],
-      confirmarSenha: ['', Validators.required]
+      confirmarSenha: ['', [Validators.required, matchValidator('senha')]]
+    });
+  }
+
+  public post(){
+    this.user = this.formulario.getRawValue() as User;
+    this.userService.post(this.user).subscribe({
+      next: user => {
+        this.dialogRef.close(true);
+      }
     });
   }
 
   public onNoClick(){
     this.dialogRef.close(false);
   }
+}
+
+export function matchValidator(
+  matchTo: string,
+  reverse?: boolean
+): ValidatorFn {
+  return (control: AbstractControl):
+  ValidationErrors | null => {
+    if (control.parent && reverse) {
+      const c = (control.parent?.controls as any)[matchTo] as AbstractControl;
+      if (c) {
+        c.updateValueAndValidity();
+      }
+      return null;
+    }
+    return !!control.parent &&
+      !!control.parent.value &&
+      control.value ===
+      (control.parent?.controls as any)[matchTo].value
+      ? null
+      : { matching: true };
+  };
 }

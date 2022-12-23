@@ -1,11 +1,16 @@
 <div class="d-flex flex-column align-items-center" mat-dialog-title>
   <span class="material-icons person-icon">person_add</span>
-  <span>Cadastro de usuário</span>
+  <span>Atualização de usuário</span>
 </div>
 <mat-dialog-content class="mat-typography">
   <h3 class="text-center">Preencha os campos abaixo para cadastrar um novo usuário</h3>
   <form [formGroup]="formulario" class="row g-3 new-registration-form">
-    <div class="col-md-8">
+    <div class="col-md-1">
+      <label for="id" class="form-label">ID</label>
+      <input autocomplete="off" formControlName="id" type="text" class="form-control" id="id" [disabled]="true">
+    </div>
+
+    <div class="col-md-7">
       <label for="nome" class="form-label">Nome Completo</label>
       <input autocomplete="off" formControlName="nome" type="text" class="form-control" id="nome" required>
       <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched" class="ng-invalid-feedback">
@@ -44,28 +49,9 @@
         <option value="administrador(a)">Administrador</option>
       </select>
     </div>
-
-    <div class="col-md-6">
-      <label for="senha" class="form-label">Senha</label>
-      <input autocomplete="off" formControlName="senha" type="password" class="form-control" id="senha" required>
-      <div *ngIf="formulario.get('senha')?.errors?.['required'] && formulario.get('senha')?.touched" class="ng-invalid-feedback">
-        Campo obrigatório.
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <label for="confirmarSenha" class="form-label">Confirme a senha</label>
-      <input autocomplete="off" formControlName="confirmarSenha" type="password" class="form-control" id="confirmarSenha" required>
-      <div *ngIf="formulario.get('confirmarSenha')?.errors?.['required'] && formulario.get('confirmarSenha')?.touched" class="ng-invalid-feedback">
-        Campo obrigatório.
-      </div>
-      <div *ngIf="formulario.get('confirmarSenha')?.errors?.['matching'] && formulario.get('confirmarSenha')?.hasError('matching')" class="ng-invalid-feedback">
-        Senhas não são iguais.
-      </div>
-    </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions class="d-flex gap-2" align="end">
   <button mat-dialog-close (click)="onNoClick()" class="btn btn-secondary">Cancelar</button>
-  <button (click)="post()" class="btn btn-success text-white" cdkFocusInitial [disabled]="formulario.invalid">Cadastrar</button>
+  <button (click)="put()" class="btn btn-success text-white" cdkFocusInitial [disabled]="formulario.invalid">Atualizar</button>
 </mat-dialog-actions>

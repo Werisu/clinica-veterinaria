@@ -23,7 +23,7 @@
 
     <div class="col-md-6">
       <label for="nome" class="form-label">Nome</label>
-      <input autocomplete="off" formControlName="nome" type="text" class="form-control" id="nome" value="Mark" required
+      <input autocomplete="off" formControlName="nome" type="text" class="form-control" id="nome" required
         placeholder="Informar nome">
       <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched"
         class="ng-invalid-feedback">
@@ -46,7 +46,7 @@
 
     <div class="col-md-3">
       <label for="fc" class="form-label">FC Nº</label>
-      <input autocomplete="off" formControlName="fc" type="text" class="form-control" id="fc" value="Mark" required
+      <input autocomplete="off" formControlName="fc" type="text" class="form-control" id="fc" required
         placeholder="123456">
       <div *ngIf="formulario.get('fc')?.errors?.['required'] && formulario.get('fc')?.touched"
         class="ng-invalid-feedback">
@@ -56,7 +56,7 @@
 
     <div class="col-md-2">
       <label for="idade" class="form-label">Idade</label>
-      <input autocomplete="off" formControlName="idade" type="number" class="form-control" id="idade" value="Mark"
+      <input autocomplete="off" formControlName="idade" type="number" class="form-control" id="idade"
         required placeholder="informar idade">
       <div *ngIf="formulario.get('idade')?.errors?.['required'] && formulario.get('idade')?.touched"
         class="ng-invalid-feedback">
@@ -75,7 +75,7 @@
 
     <div class="col-md-3">
       <label for="raca" class="form-label">Raça</label>
-      <input autocomplete="off" formControlName="raca" type="text" class="form-control" id="raca" value="Mark" required
+      <input autocomplete="off" formControlName="raca" type="text" class="form-control" id="raca" required
         placeholder="Informar raça">
       <div *ngIf="formulario.get('raca')?.errors?.['required'] && formulario.get('raca')?.touched"
         class="ng-invalid-feedback">
@@ -85,7 +85,7 @@
 
     <div class="col-md-3">
       <label for="cor" class="form-label">Cor</label>
-      <input autocomplete="off" formControlName="cor" type="text" class="form-control" id="cor" value="Mark" required
+      <input autocomplete="off" formControlName="cor" type="text" class="form-control" id="cor" required
         placeholder="Informar cor">
       <div *ngIf="formulario.get('cor')?.errors?.['required'] && formulario.get('cor')?.touched"
         class="ng-invalid-feedback">
@@ -96,7 +96,7 @@
     <div class="col-md-2">
       <label for="peso" class="form-label">Peso</label>
       <input autocomplete="off" formControlName="peso" mask="0.00" type="text" class="form-control" id="peso"
-        value="Mark" required placeholder="Informar peso em Kg">
+        required placeholder="Informar peso em Kg">
       <div *ngIf="formulario.get('peso')?.errors?.['required'] && formulario.get('peso')?.touched"
         class="ng-invalid-feedback">
         Campo obrigatório.

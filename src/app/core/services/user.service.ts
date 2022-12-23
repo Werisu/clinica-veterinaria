@@ -13,12 +13,20 @@ export class UserService {
 
 constructor(private httpClient: HttpClient) { }
 
-public GetAll(): Observable<Users>{
+public getAll(): Observable<Users>{
   return this.httpClient.get<Users>(API);
 }
 
-public Post(payload: User): Observable<User>{
+public post(payload: User): Observable<User>{
   return this.httpClient.post<User>(API, payload);
+}
+
+public put(payload: User){
+  return this.httpClient.put(`${API}/${payload.id}`, payload);
+}
+
+public delete(id: number){
+  return this.httpClient.delete(`${API}/${id}`);
 }
 
 }

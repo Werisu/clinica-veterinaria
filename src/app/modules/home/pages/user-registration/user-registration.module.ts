@@ -7,7 +7,8 @@ import { TableUsersComponent } from './table-users/table-users.component';
 import { NewRegistrationComponent } from './new-registration/new-registration.component';
 import { MatButtonModule } from "@angular/material/button";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { EditUserComponent } from './edit-user/edit-user.component'
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -18,6 +19,7 @@ const maskConfig: Partial<IConfig> = {
     UserRegistrationComponent,
     TableUsersComponent,
     NewRegistrationComponent,
+    EditUserComponent,
   ],
   imports: [
     CommonModule,

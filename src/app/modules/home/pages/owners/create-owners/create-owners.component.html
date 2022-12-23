@@ -7,7 +7,7 @@
   <form [formGroup]="formulario" class="row g-3 new-registration-form">
     <div class="col-md-8">
       <label for="nome" class="form-label">Nome Completo</label>
-      <input autocomplete="off" formControlName="nome" type="text" class="form-control" id="nome" value="Mark" required>
+      <input autocomplete="off" formControlName="nome" type="text" class="form-control" id="nome" required>
       <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched" class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -15,7 +15,7 @@
 
     <div class="col-md-4">
       <label for="cpf" class="form-label">CPF</label>
-      <input autocomplete="off" formControlName="cpf" type="text" class="form-control" id="cpf" value="Mark" mask="CPF_CNPJ" required>
+      <input autocomplete="off" formControlName="cpf" type="text" class="form-control" id="cpf" mask="CPF_CNPJ" required>
       <div *ngIf="formulario.get('cpf')?.errors?.['required'] && formulario.get('cpf')?.touched" class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -26,7 +26,7 @@
 
     <div class="col-md-8">
       <label for="email" class="form-label">E-mail</label>
-      <input autocomplete="off" formControlName="email" type="text" class="form-control" id="email" value="Mark" required>
+      <input autocomplete="off" formControlName="email" type="text" class="form-control" id="email" required>
       <div *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched" class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -37,7 +37,7 @@
 
     <div class="col-md-4">
       <label for="telephone" class="form-label">Celular</label>
-      <input autocomplete="off" formControlName="telephone" type="text" class="form-control" id="telephone" value="Mark" mask="(00) 00000-0000" required>
+      <input autocomplete="off" formControlName="telephone" type="text" class="form-control" id="telephone" mask="(00) 00000-0000" required>
       <div *ngIf="formulario.get('telephone')?.errors?.['required'] && formulario.get('telephone')?.touched" class="ng-invalid-feedback">
         Campo obrigatório.
       </div>

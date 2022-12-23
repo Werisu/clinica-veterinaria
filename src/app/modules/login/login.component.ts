@@ -23,7 +23,7 @@ export class LoginComponent {
   }
 
   public login(){
-    this.userService.GetAll().subscribe((res) => {
+    this.userService.getAll().subscribe((res) => {
       res.forEach(key => {
         if(key.nome == this.usuario && key.senha == this.senha){
           this.router.navigate(['painel/inicio']);
