@@ -22,6 +22,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-mdc-header-row{
   background-color: var(--secundary-color) !important;
   border-radius: 8px;
+  height: auto !important;
 }
 .mat-mdc-header-row .mat-mdc-header-cell {
   color: white;

@@ -95,5 +95,43 @@
       "telephone": "86980174785",
       "id": 3
     }
+  ],
+  "paciente": [
+    {
+      "nome": "Neno",
+      "especie": "Gato",
+      "fc": "123456",
+      "idade": 4,
+      "sexo": "Macho",
+      "raca": "Persa",
+      "cor": "Amarelo",
+      "peso": "4.56",
+      "proprietario": {
+        "nome": "Marinete Pereira do Nascimento Rocha",
+        "cpf": "05277440186",
+        "email": "marinete.pereirarocha@gmail.com",
+        "telephone": "62992510372",
+        "id": 1
+      },
+      "id": 1
+    },
+    {
+      "nome": "Nina",
+      "especie": "Gato",
+      "fc": "123457",
+      "idade": 2,
+      "sexo": "Fême",
+      "raca": "Branca",
+      "cor": "Cinza",
+      "peso": "2.35",
+      "proprietario": {
+        "id": 2,
+        "nome": "Maria Eduarda Dos Santos Penalva",
+        "cpf": "62525541200",
+        "email": "mariaeduardadossantos551@gmail.com",
+        "telephone": "63992949666"
+      },
+      "id": 2
+    }
   ]
 }

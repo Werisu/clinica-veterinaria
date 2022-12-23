@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -37,7 +39,9 @@ const maskConfig: Partial<IConfig> = {
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatAutocompleteModule,
+    NgbTypeaheadModule
   ]
 })
 export class PatientRecordModule { }

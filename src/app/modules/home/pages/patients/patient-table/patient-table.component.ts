@@ -1,7 +1,13 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Patient, Patients } from './../../../../../core/interfaces/patient';
+import { PatientService } from './../../../../../core/services/patient.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { CreatePatientComponent } from './../create-patient/create-patient.component';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import * as moment from 'moment';
+import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-patient-table',
@@ -13,38 +19,17 @@ export class PatientTableComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  public pacientes = [
-    {
-      nome: 'Jane Cooper',
-      idade: 5,
-      especie: 'Canino',
-      sexo: 'Macho'
-    },
-    {
-      nome: 'Guy Hawkins',
-      idade: 2,
-      especie: 'Felino',
-      sexo: 'Fêmea'
-    },
-    {
-      nome: 'Brooklyn Simmons',
-      idade: 1,
-      especie: 'Canino',
-      sexo: 'Fêmea'
-    },
-    {
-      nome: 'Jacob Jones',
-      idade: 3,
-      especie: 'Canino',
-      sexo: 'Macho'
-    }
-  ];
+  public pacientes: Patients = [];
 
   public moment = moment;
 
-  constructor() { }
+  public displayedColumns: string[] = ['id', 'nome', 'especie', 'sexo', 'acoes'];
+  public dataSource = new MatTableDataSource(this.pacientes);
+
+  constructor(private observer: BreakpointObserver, private cdr: ChangeDetectorRef, public dialog: MatDialog, private patientService: PatientService) { }
 
   ngOnInit() {
+    this.getPatient();
   }
 
   ngAfterViewInit() {
@@ -56,12 +41,100 @@ export class PatientTableComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acoes'];
-  dataSource = new MatTableDataSource(this.pacientes);
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDialog(mode: 'edit' | 'create', patient?: Patient) {
+    if (mode == 'create') {
+      const dialogRef = this.dialog.open(CreatePatientComponent, {
+        width: '50vw',
+      });
+
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log(`Dialog result: ${result}`);
+
+        if (result == true) {
+          this.getPatient();
+        }
+      });
+    } else {
+      // const dialogRef = this.dialog.open(EditOwnersComponent, {
+      //   width: '50vw',
+      //   data: owner,
+      // });
+
+      // dialogRef.afterClosed().subscribe((result) => {
+      //   console.log(`Dialog result: ${result}`);
+
+      //   if (result == true) {
+      //     this.getOwners();
+      //   }
+      // });
+    }
+  }
+
+  public getPatient(){
+    this.patientService.getAll().subscribe({
+      next: owners => {
+        this.pacientes = owners;
+        this.dataSource.data = owners;
+      },
+      error: err => {
+        console.error(err);
+      }
+    })
+  }
+
+  public deleteOwner(patient: Patient) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Tem certeza?',
+      html: `Quer deletar o proprietário <strong>${patient.nome}</strong>? Você não será capaz de reverter isso!`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confimar',
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        actions: 'gap-2',
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-secondary'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.patientService.delete(patient.id ?? -1).subscribe({
+          next: () => {
+            swalWithBootstrapButtons.fire({
+              title: 'Deletado!',
+              html: `O proprietário <strong>${patient.nome}</strong>`,
+              icon: 'success'
+          });
+
+            this.getPatient();
+          },
+          error: (err) => {
+            alert('error');
+          },
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: 'Cancelado',
+          html: `O proprietário <strong>${patient.nome}</strong> está seguro :)`,
+          icon: 'error'
+      });
+      }
+    });
   }
 
 }

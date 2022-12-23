@@ -8,9 +8,22 @@
     <div class="col-md-12">
       <label for="proprietario" class="form-label">Proprietário</label>
       <div class="input-group mb-3">
-        <input formControlName="proprietario" id="proprietario" type="text" class="form-control"
+        <input formControlName="proprietario" id="proprietario" type="text" class="form-control" *ngIf="false"
           placeholder="Informar o nome do proprietário" aria-label="Informar o nome do proprietário" aria-describedby="button-proprietario"
           required>
+
+          <input
+          id="proprietario"
+          formControlName="proprietario"
+          type="text"
+          class="form-control"
+          [ngbTypeahead]="search"
+          placeholder="Informar o nome do proprietário"
+          aria-label="Informar o nome ou cpf do proprietário"
+          aria-describedby="button-proprietario"
+          [resultFormatter]="formatter"
+          [inputFormatter]="formatter"
+        />
         <button class="btn btn-primary d-flex" type="button" id="button-proprietario">
           <span class="material-icons">search</span>
         </button>
@@ -104,8 +117,7 @@
     </div>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions class="d-flex" align="end">
-  <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button [mat-dialog-close]="true" class="btn btn-success text-white" cdkFocusInitial
-    [disabled]="formulario.invalid">Cadastrar</button>
+<mat-dialog-actions class="d-flex gap-2" align="end">
+  <button mat-dialog-close (click)="onNoClick()" class="btn btn-secondary">Cancelar</button>
+  <button (click)="post()" class="btn btn-success text-white" cdkFocusInitial [disabled]="formulario.invalid">Cadastrar</button>
 </mat-dialog-actions>
