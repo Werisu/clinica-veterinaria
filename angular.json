@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["rxjs-compat", "moment", "sweetalert2", "ts-md5", "angular2-uuid"],
             "outputPath": "dist/clinica-veterinaria",
             "index": "src/index.html",
             "main": "src/main.ts",
