@@ -1,3 +1,4 @@
+import { EditPatientComponent } from './../edit-patient/edit-patient.component';
 import { Patient, Patients } from './../../../../../core/interfaces/patient';
 import { PatientService } from './../../../../../core/services/patient.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
@@ -60,18 +61,18 @@ export class PatientTableComponent implements OnInit, AfterViewInit {
         }
       });
     } else {
-      // const dialogRef = this.dialog.open(EditOwnersComponent, {
-      //   width: '50vw',
-      //   data: owner,
-      // });
+      const dialogRef = this.dialog.open(EditPatientComponent, {
+        width: '50vw',
+        data: patient,
+      });
 
-      // dialogRef.afterClosed().subscribe((result) => {
-      //   console.log(`Dialog result: ${result}`);
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log(`Dialog result: ${result}`);
 
-      //   if (result == true) {
-      //     this.getOwners();
-      //   }
-      // });
+        if (result == true) {
+          this.getPatient();
+        }
+      });
     }
   }
 

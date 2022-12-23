@@ -5,10 +5,11 @@ export interface Patient {
   id: number
   nome: string
   especie: string
+  fc: string
+  idade: number
+  sexo: string
   raca: string
-  idade: string
-  sexo: any
-  corPelagem: string
-  dataEntrada: string
+  cor: string
+  peso: string
   proprietario: Owner
 }

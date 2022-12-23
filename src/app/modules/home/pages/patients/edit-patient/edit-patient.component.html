@@ -1,0 +1,123 @@
+<div class="d-flex flex-column align-items-center" mat-dialog-title>
+  <span class="material-icons person-icon">person_add</span>
+  <span>Atualização de paciente</span>
+</div>
+<mat-dialog-content class="mat-typography">
+  <h3 class="text-center">Preencha os campos abaixo para cadastrar um novo usuário</h3>
+  <form [formGroup]="formulario" class="row g-3 new-registration-form">
+    <div class="col-md-12">
+      <label for="proprietario" class="form-label">Proprietário</label>
+      <div class="input-group mb-3">
+        <input formControlName="proprietario" id="proprietario" type="text" class="form-control" *ngIf="false"
+          placeholder="Informar o nome do proprietário" aria-label="Informar o nome do proprietário" aria-describedby="button-proprietario"
+          required>
+
+          <input
+          id="proprietario"
+          formControlName="proprietario"
+          type="text"
+          class="form-control"
+          [ngbTypeahead]="search"
+          placeholder="Informar o nome do proprietário"
+          aria-label="Informar o nome ou cpf do proprietário"
+          aria-describedby="button-proprietario"
+          [resultFormatter]="formatter"
+          [inputFormatter]="formatter"
+        />
+        <button class="btn btn-primary d-flex" type="button" id="button-proprietario">
+          <span class="material-icons">search</span>
+        </button>
+      </div>
+      <div *ngIf="formulario.get('proprietario')?.errors?.['required'] && formulario.get('proprietario')?.touched"
+        class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="nome" class="form-label">Nome</label>
+      <input autocomplete="off" formControlName="nome" type="text" class="form-control" id="nome" required
+        placeholder="Informar nome">
+      <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched"
+        class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <label for="especie" class="form-label">Especie</label>
+      <select formControlName="especie" class="form-select" id="especie" aria-describedby="funcaoFeedback" required>
+        <option selected disabled value="">Escolha...</option>
+        <option>Cão</option>
+        <option>Gato</option>
+      </select>
+      <div *ngIf="formulario.get('especie')?.errors?.['required'] && formulario.get('especie')?.touched"
+        class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <label for="fc" class="form-label">FC Nº</label>
+      <input autocomplete="off" formControlName="fc" type="text" class="form-control" id="fc" required
+        placeholder="123456">
+      <div *ngIf="formulario.get('fc')?.errors?.['required'] && formulario.get('fc')?.touched"
+        class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <label for="idade" class="form-label">Idade</label>
+      <input autocomplete="off" formControlName="idade" type="number" class="form-control" id="idade"
+        required placeholder="informar idade">
+      <div *ngIf="formulario.get('idade')?.errors?.['required'] && formulario.get('idade')?.touched"
+        class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <label for="sexo" class="form-label">Sexo</label>
+      <select formControlName="sexo" class="form-select" id="sexo" aria-describedby="funcaoFeedback" required>
+        <option selected disabled value="">Escolha...</option>
+        <option>Macho</option>
+        <option>Fême</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label for="raca" class="form-label">Raça</label>
+      <input autocomplete="off" formControlName="raca" type="text" class="form-control" id="raca" required
+        placeholder="Informar raça">
+      <div *ngIf="formulario.get('raca')?.errors?.['required'] && formulario.get('raca')?.touched"
+        class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <label for="cor" class="form-label">Cor</label>
+      <input autocomplete="off" formControlName="cor" type="text" class="form-control" id="cor" required
+        placeholder="Informar cor">
+      <div *ngIf="formulario.get('cor')?.errors?.['required'] && formulario.get('cor')?.touched"
+        class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <label for="peso" class="form-label">Peso</label>
+      <input autocomplete="off" formControlName="peso" mask="0.00" [dropSpecialCharacters]="false" type="text" class="form-control" id="peso"
+        required placeholder="Informar peso em Kg">
+      <div *ngIf="formulario.get('peso')?.errors?.['required'] && formulario.get('peso')?.touched"
+        class="ng-invalid-feedback">
+        Campo obrigatório.
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="d-flex gap-2" align="end">
+  <button mat-dialog-close (click)="onNoClick()" class="btn btn-secondary">Cancelar</button>
+  <button (click)="put()" class="btn btn-success text-white" cdkFocusInitial [disabled]="formulario.invalid">Atualizar</button>
+</mat-dialog-actions>

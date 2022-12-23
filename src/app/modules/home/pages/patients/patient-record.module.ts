@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditPatientComponent } from './edit-patient/edit-patient.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -25,7 +26,8 @@ const maskConfig: Partial<IConfig> = {
   declarations: [
     PatientRecordComponent,
     PatientTableComponent,
-    CreatePatientComponent
+    CreatePatientComponent,
+    EditPatientComponent
   ],
   imports: [
     CommonModule,
