@@ -184,6 +184,149 @@
       </form>
     </mat-step>
 
+    <!-- Step 2 - Anamnese Especial -->
+    <mat-step [stepControl]="FormularioAnamneseEspecial" label="Anamnese Especial">
+      <form
+        [formGroup]="FormularioAnamneseEspecial"
+        class="row g-3 new-registration-form"
+      >
+      <div class="col-md-5">
+        <label for="paciente">Paciente:</label>
+        <input
+          type="text"
+          readonly
+          class="form-control disabled"
+          [value]="!!patient ? patient.nome : ''"
+        />
+      </div>
+
+      <div class="col-md-2">
+        <label for="paciente">Raça:</label>
+        <input
+          type="text"
+          readonly
+          class="form-control disabled"
+          [value]="!!patient ? patient.raca : ''"
+        />
+      </div>
+
+      <div class="col-md-5">
+        <label for="paciente">Proprietário:</label>
+        <input
+          type="text"
+          readonly
+          class="form-control disabled"
+          [value]="!!owner ? owner.nome : ''"
+        />
+      </div>
+
+        <!-- olhos -->
+        <div class="col-md-12">
+          <label for="olhos">Olhos</label>
+          <textarea
+            class="form-control"
+            placeholder="Nas palavas do proprietário"
+            id="olhos"
+            style="height: 100px"
+            formControlName="olhos"
+          ></textarea>
+        </div>
+
+        <!-- ouvidos -->
+        <div class="col-md-12">
+          <label for="ouvidos">Ouvidos</label>
+          <textarea
+            class="form-control"
+            placeholder="Início, apresentação, evolução, trat. prévio"
+            id="ouvidos"
+            style="height: 100px"
+            formControlName="ouvidos"
+          ></textarea>
+        </div>
+
+        <!-- sr -->
+        <div class="col-md-12">
+          <label for="sr">S.R.</label>
+          <textarea
+            class="form-control"
+            placeholder="Doença já ocorridas, cirurgias, traumas, etc."
+            id="sr"
+            style="height: 100px"
+            formControlName="sr"
+          ></textarea>
+        </div>
+
+        <!-- sc -->
+        <div class="col-md-12">
+          <label for="sc">S.C</label>
+          <textarea
+            class="form-control"
+            placeholder="Alimentação  antes e depois da doença, habitação, coabitação, sistema de criação, etc."
+            id="sc"
+            style="height: 100px"
+            formControlName="sc"
+          ></textarea>
+        </div>
+
+        <!-- sd -->
+        <div class="col-md-12">
+          <label for="sd"
+            >S.D.</label
+          >
+          <textarea
+            class="form-control"
+            placeholder="Descreva sobre"
+            id="sd"
+            style="height: 100px"
+            formControlName="sd"
+          ></textarea>
+        </div>
+
+        <!-- sgu -->
+        <div class="col-md-12">
+          <label for="sgu"
+            >S.G.U.</label
+          >
+          <textarea
+            class="form-control"
+            placeholder="Descreva sobre"
+            id="sgu"
+            style="height: 100px"
+            formControlName="sgu"
+          ></textarea>
+        </div>
+
+        <!-- sn -->
+        <div class="col-md-12">
+          <label for="sd"
+            >S.N.</label
+          >
+          <textarea
+            class="form-control"
+            placeholder="Descreva sobre"
+            id="sd"
+            style="height: 100px"
+            formControlName="sd"
+          ></textarea>
+        </div>
+
+        <!-- Historico Imunizacao -->
+        <div class="col-md-12">
+          <label for="historicoImunizacao"
+            >Historico Imunizacao</label
+          >
+          <textarea
+            class="form-control"
+            placeholder="Descreva sobre"
+            id="historicoImunizacao"
+            style="height: 100px"
+            formControlName="historicoImunizacao"
+          ></textarea>
+        </div>
+
+      </form>
+    </mat-step>
+
     <mat-step>
       <div class="my-4">
         <ng-template matStepLabel>Done</ng-template>

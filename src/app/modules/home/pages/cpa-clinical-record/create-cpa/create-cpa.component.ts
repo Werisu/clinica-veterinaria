@@ -36,6 +36,7 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
     saerch: ['', Validators.required],
   });
   FormularioAnamneseGeral!: FormGroup;
+  FormularioAnamneseEspecial!: FormGroup;
   isLinear = true;
 
   // TABELA DE PACIENTES
@@ -49,14 +50,27 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getPatients();
+
     this.FormularioAnamneseGeral = this._formBuilder.group({
       queixaPrincipal: ['', Validators.required],
       historicoDoencaAtual: ['', Validators.required],
       antecedentesMorbidos: ['', Validators.required],
       CondicaoDeVida: ['', Validators.required],
       saudeConvivio: ['', Validators.required],
-      paciente: ['', Validators.required],
+      paciente: ['', Validators.required]
     });
+
+    this.FormularioAnamneseEspecial = this._formBuilder.group({
+      olhos: ['', Validators.required],
+      ouvidos: ['', Validators.required],
+      sr: ['', Validators.required],
+      sc: ['', Validators.required],
+      sd: ['', Validators.required],
+      sgu: ['', Validators.required],
+      sn: ['', Validators.required],
+      historicoImunizacao: ['', Validators.required],
+      paciente: ['', Validators.required]
+    })
   }
 
   ngAfterViewInit() {
