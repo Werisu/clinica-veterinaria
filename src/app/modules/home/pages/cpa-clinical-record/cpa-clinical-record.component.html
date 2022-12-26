@@ -1,0 +1,19 @@
+<div class="d-flex flex-column align-items-center">
+  <div class="title">
+    <h2>Listagem de Fichas CPA Cadastradas</h2>
+  </div>
+
+  <div class="d-flex flex-column align-items-center">
+    <div class="input-group rounded">
+      <input #input type="search" class="form-control" placeholder="Pesquisar" aria-label="Search"
+        aria-describedby="search-addon" />
+      <span class="input-group-text border-0 bg-primary" id="search-addon">
+        <span class="material-icons text-white">search</span>
+      </span>
+    </div>
+    <small class="text-muted my-2">128 Fichas Cadastrados</small>
+  </div>
+</div>
+
+<!-- <app-table-users [users]="owners"></app-table-users> -->
+<app-cpa-table [inputHTML]="input"></app-cpa-table>

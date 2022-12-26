@@ -1,0 +1,214 @@
+<div mat-dialog-title>
+  <div class="d-flex flex-column gap-2">
+    <h1>Ficha Clinica CPA</h1>
+  </div>
+</div>
+<div mat-dialog-content>
+  <mat-stepper [linear]="isLinear" #stepper>
+    <!-- Step 0 - seleção de paciente -->
+    <mat-step [stepControl]="selecaoPaciente" state="paciente">
+      <ng-template matStepLabel>Seleção de Paciente</ng-template>
+
+      <!-- Tabela de pacientes -->
+      <form [formGroup]="selecaoPaciente">
+        <div class="input-group flex-nowrap my-4">
+          <input
+            type="text"
+            class="form-control border-end-0"
+            placeholder="Digite o nome do paciente"
+            aria-label="Nome do paciente"
+            aria-describedby="addon-wrapping"
+            (keyup)="applyFilter($event)"
+            formControlName="saerch"
+          />
+          <span class="d-flex align-items-center border rounded-end">
+            <span class="material-icons"> search </span>
+          </span>
+        </div>
+      </form>
+
+      <div class="table-responsive rounded-start rounded-end">
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          class="mat-elevation-z8 table demo-table align-middle"
+        >
+          <!-- Position Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef>Nome do paciente</th>
+            <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
+          </ng-container>
+
+          <!-- Age Column -->
+          <ng-container matColumnDef="idade">
+            <th mat-header-cell *matHeaderCellDef>Idade</th>
+            <td mat-cell *matCellDef="let element">{{ element.idade }}</td>
+          </ng-container>
+
+          <!-- Species Column -->
+          <ng-container matColumnDef="especie">
+            <th mat-header-cell *matHeaderCellDef>Espécie</th>
+            <td mat-cell *matCellDef="let element">{{ element.especie }}</td>
+          </ng-container>
+
+          <!-- Sex Column -->
+          <ng-container matColumnDef="sexo">
+            <th mat-header-cell *matHeaderCellDef>Sexo</th>
+            <td mat-cell *matCellDef="let element">{{ element.sexo }}</td>
+          </ng-container>
+
+          <!-- Owner Column -->
+          <ng-container matColumnDef="proprietario">
+            <th mat-header-cell *matHeaderCellDef>Nome do proprietário</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.proprietario.nome }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr
+            mat-row
+            (click)="clickRow(row)"
+            [class.demo-row-is-clicked]="patient == row"
+            [class.blink]="patient == row"
+            *matRowDef="let row; columns: displayedColumns"
+          ></tr>
+        </table>
+      </div>
+      <mat-paginator #paginatorSelectPatient [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements"
+                 >
+  </mat-paginator>
+      <!--/ Fim da tabela de pacientes -->
+    </mat-step>
+
+    <!-- Step 1 - Anamnese Geral -->
+    <mat-step [stepControl]="FormularioAnamneseGeral" label="Anamnese Geral">
+      <form
+        [formGroup]="FormularioAnamneseGeral"
+        class="row g-3 new-registration-form"
+      >
+        <div class="col-md-5">
+          <label for="paciente">Paciente:</label>
+          <input
+            type="text"
+            readonly
+            class="form-control disabled"
+            [value]="!!patient ? patient.nome : ''"
+          />
+        </div>
+
+        <div class="col-md-2">
+          <label for="paciente">Raça:</label>
+          <input
+            type="text"
+            readonly
+            class="form-control disabled"
+            [value]="!!patient ? patient.raca : ''"
+          />
+        </div>
+
+        <div class="col-md-5">
+          <label for="paciente">Proprietário:</label>
+          <input
+            type="text"
+            readonly
+            class="form-control disabled"
+            [value]="!!owner ? owner.nome : ''"
+          />
+        </div>
+
+        <div class="col-md-12">
+          <label for="queixa-principal">Queixa principal</label>
+          <textarea
+            class="form-control"
+            placeholder="Nas palavas do proprietário"
+            id="queixa-principal"
+            style="height: 100px"
+            formControlName="queixaPrincipal"
+          ></textarea>
+        </div>
+
+        <div class="col-md-12">
+          <label for="historicoDoencaAtual">Histórico de doença atual</label>
+          <textarea
+            class="form-control"
+            placeholder="Início, apresentação, evolução, trat. prévio"
+            id="historicoDoencaAtual"
+            style="height: 100px"
+            formControlName="historicoDoencaAtual"
+          ></textarea>
+        </div>
+
+        <div class="col-md-12">
+          <label for="antecedentesMorbidos">Antecedentes mórbidos</label>
+          <textarea
+            class="form-control"
+            placeholder="Doença já ocorridas, cirurgias, traumas, etc."
+            id="antecedentesMorbidos"
+            style="height: 100px"
+            formControlName="antecedentesMorbidos"
+          ></textarea>
+        </div>
+
+        <div class="col-md-12">
+          <label for="CondicaoDeVida">Condição de vida</label>
+          <textarea
+            class="form-control"
+            placeholder="Alimentação  antes e depois da doença, habitação, coabitação, sistema de criação, etc."
+            id="CondicaoDeVida"
+            style="height: 100px"
+            formControlName="CondicaoDeVida"
+          ></textarea>
+        </div>
+
+        <div class="col-md-12">
+          <label for="saudeConvivio"
+            >Saúde dos pais, irmãos e outros animais de convivio</label
+          >
+          <textarea
+            class="form-control"
+            placeholder="Descreva sobre"
+            id="saudeConvivio"
+            style="height: 100px"
+            formControlName="saudeConvivio"
+          ></textarea>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <div class="my-4">
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button>Salva</button>
+      </div>
+    </mat-step>
+
+    <ng-template matStepperIcon="paciente">
+      <span class="material-icons"> pets </span>
+    </ng-template>
+  </mat-stepper>
+</div>
+<div mat-dialog-actions align="center" class="gap-2">
+  <button
+    class="btn btn-secondary"
+    *ngIf="this.stepper.selectedIndex > 0"
+    (click)="back()"
+  >
+    Voltar
+  </button>
+  <button class="btn btn-success" [disabled]="!patient" (click)="next()">
+    Próximo
+  </button>
+</div>

@@ -1,0 +1,54 @@
+.demo-table {
+  width: 100%;
+}
+
+.mat-mdc-row {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+  border-radius: 25px;
+}
+.mat-mdc-row td:first-child {
+  border-start-start-radius: 8px;
+  border-end-start-radius: 8px;
+}
+.mat-mdc-row td:last-child {
+  border-end-end-radius: 8px;
+  border-start-end-radius: 8px;
+}
+
+.mat-mdc-row:hover {
+  background-color: var(--light-color);
+}
+
+.demo-row-is-clicked {
+  background-color: var(--primary-color);
+}
+
+.demo-row-is-clicked td{
+  color: #FFF;
+}
+
+.demo-row-is-clicked:hover{
+  background-color: var(--primary-color);
+}
+
+.blink {
+  animation: blink 0.2s;
+  animation-timing-function: ease;
+  animation-iteration-count: 3;
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.disabled{
+  background-color: var(--bs-gray-300);
+}

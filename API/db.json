@@ -132,6 +132,79 @@
         "telephone": "63992949666"
       },
       "id": 2
+    },
+    {
+      "nome": "Mabel",
+      "especie": "Gato",
+      "fc": "789456",
+      "idade": 3,
+      "sexo": "Macho",
+      "raca": "Shih Tzu",
+      "cor": "Marrom com Branco",
+      "peso": "3.00",
+      "proprietario": {
+        "nome": "Cláudio Emanuel Viana",
+        "cpf": "03183572672",
+        "email": "claudio.emanuel.viana@senhorasdaarte.com.br",
+        "telephone": "86980174785",
+        "id": 3
+      },
+      "id": 3
+    },
+    {
+      "nome": "Thor",
+      "especie": "Cão",
+      "fc": "789456",
+      "idade": 2,
+      "sexo": "Macho",
+      "raca": "Shih Tzu",
+      "cor": "Marrom com Branco",
+      "peso": "3.00",
+      "proprietario": {
+        "nome": "Cláudio Emanuel Viana",
+        "cpf": "03183572672",
+        "email": "claudio.emanuel.viana@senhorasdaarte.com.br",
+        "telephone": "86980174785",
+        "id": 3
+      },
+      "id": 4
+    },
+    {
+      "nome": "Rodolf",
+      "especie": "Gato",
+      "fc": "456951",
+      "idade": 1,
+      "sexo": "Macho",
+      "raca": "persa",
+      "cor": "marrom",
+      "peso": "2.00",
+      "proprietario": {
+        "id": 2,
+        "nome": "Maria Eduarda Dos Santos Penalva",
+        "cpf": "62525541200",
+        "email": "mariaeduardadossantos551@gmail.com",
+        "telephone": "63992949666"
+      },
+      "id": 5
+    },
+    {
+      "nome": "Julião",
+      "especie": "Cão",
+      "fc": "756312",
+      "idade": 3,
+      "sexo": "Macho",
+      "raca": "PitBull",
+      "cor": "Preto",
+      "peso": "5.00",
+      "proprietario": {
+        "nome": "Marinete Pereira do Nascimento Rocha",
+        "cpf": "05277440186",
+        "email": "marinete.pereirarocha@gmail.com",
+        "telephone": "62992510372",
+        "id": 1
+      },
+      "id": 6
     }
-  ]
+  ],
+  "cpa": []
 }

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "json-server --host 192.168.11.171 db.json --port 3000"
+    "start": "json-server --host 192.168.11.171 db.json --port 3000",
+    "test": "json-server --watch db.json --port 3000"
   },
   "keywords": [],
   "author": "",
