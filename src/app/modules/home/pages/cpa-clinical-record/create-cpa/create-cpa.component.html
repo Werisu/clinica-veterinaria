@@ -72,21 +72,29 @@
 
     <!-- Step 1 - Anamnese Geral -->
     <mat-step [stepControl]="formularioAnamneseGeral" label="Anamnese Geral">
+
+      <div class="d-flex justify-content-center">
+        <div class="paciente-selecionado rounded bg-dark text-white d-flex gap-4 p-2 my-2 w-auto justify-content-between">
+          <span class="material-icons">
+            pets
+          </span>
+
+          <div class="nome-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.nome }}</span>
+          </div>
+          <div class="especie-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.especie }}</span>
+          </div>
+          <div class="sexo-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.sexo }}</span>
+          </div>
+          <div class="idade-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.idade }}</span>
+          </div>
+        </div>
+      </div>
+
       <form [formGroup]="formularioAnamneseGeral" class="row g-3 new-registration-form">
-        <div class="col-md-5">
-          <label for="paciente">Paciente:</label>
-          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.nome : ''" />
-        </div>
-
-        <div class="col-md-2">
-          <label for="paciente">Raça:</label>
-          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.raca : ''" />
-        </div>
-
-        <div class="col-md-5">
-          <label for="paciente">Proprietário:</label>
-          <input type="text" readonly class="form-control disabled" [value]="!!owner ? owner.nome : ''" />
-        </div>
 
         <div class="col-md-12">
           <div class="d-flex gap-2 mb-2">
@@ -149,21 +157,28 @@
 
     <!-- Step 2 - Anamnese Especial -->
     <mat-step [stepControl]="formularioAnamneseEspecial" label="Anamnese Especial">
+      <div class="d-flex justify-content-center">
+        <div class="paciente-selecionado rounded bg-dark text-white d-flex gap-4 p-2 my-2 w-auto justify-content-between">
+          <span class="material-icons">
+            pets
+          </span>
+
+          <div class="nome-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.nome }}</span>
+          </div>
+          <div class="especie-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.especie }}</span>
+          </div>
+          <div class="sexo-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.sexo }}</span>
+          </div>
+          <div class="idade-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.idade }}</span>
+          </div>
+        </div>
+      </div>
+
       <form [formGroup]="formularioAnamneseEspecial" class="row g-3 new-registration-form">
-        <div class="col-md-5">
-          <label for="paciente">Paciente:</label>
-          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.nome : ''" />
-        </div>
-
-        <div class="col-md-2">
-          <label for="paciente">Raça:</label>
-          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.raca : ''" />
-        </div>
-
-        <div class="col-md-5">
-          <label for="paciente">Proprietário:</label>
-          <input type="text" readonly class="form-control disabled" [value]="!!owner ? owner.nome : ''" />
-        </div>
 
         <!-- olhos -->
         <div class="col-md-12">
@@ -274,21 +289,29 @@
 
     <!-- Step 3 - Exame Objetivo -->
     <mat-step [stepControl]="formularioExameObjetivo" label="Exame Objetivo">
+
+      <div class="d-flex justify-content-center">
+        <div class="paciente-selecionado rounded bg-dark text-white d-flex gap-4 p-2 my-2 w-auto justify-content-between">
+          <span class="material-icons">
+            pets
+          </span>
+
+          <div class="nome-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.nome }}</span>
+          </div>
+          <div class="especie-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.especie }}</span>
+          </div>
+          <div class="sexo-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.sexo }}</span>
+          </div>
+          <div class="idade-paciente">
+            <span><strong>Paciente:</strong> {{ patient?.idade }}</span>
+          </div>
+        </div>
+      </div>
+
       <form [formGroup]="formularioExameObjetivo" class="row g-3 new-registration-form">
-        <div class="col-md-5">
-          <label for="paciente">Paciente:</label>
-          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.nome : ''" />
-        </div>
-
-        <div class="col-md-2">
-          <label for="paciente">Raça:</label>
-          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.raca : ''" />
-        </div>
-
-        <div class="col-md-5">
-          <label for="paciente">Proprietário:</label>
-          <input type="text" readonly class="form-control disabled" [value]="!!owner ? owner.nome : ''" />
-        </div>
 
         <!-- Temperatúra Retal Cº  -->
         <div class="col-md-12">

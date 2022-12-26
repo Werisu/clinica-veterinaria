@@ -39,7 +39,7 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'nome', 'idade', 'especie', 'sexo', 'proprietario'];
   patients: Patients = [];
   dataSource!: MatTableDataSource<Patient>;
-  patient!: Patient;
+  patient?: Patient;
   owner!: Owner;
 
   constructor(private _formBuilder: FormBuilder, private patientsService: PatientService, private cdr: ChangeDetectorRef) {}
