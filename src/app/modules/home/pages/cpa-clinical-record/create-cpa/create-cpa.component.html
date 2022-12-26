@@ -11,14 +11,8 @@
       <!-- Tabela de pacientes -->
       <form>
         <div class="input-group flex-nowrap my-4">
-          <input
-            type="text"
-            class="form-control border-end-0"
-            placeholder="Digite o nome do paciente"
-            aria-label="Nome do paciente"
-            aria-describedby="addon-wrapping"
-            (keyup)="applyFilter($event)"
-          />
+          <input type="text" class="form-control border-end-0" placeholder="Digite o nome do paciente"
+            aria-label="Nome do paciente" aria-describedby="addon-wrapping" (keyup)="applyFilter($event)" />
           <span class="d-flex align-items-center border rounded-end">
             <span class="material-icons"> search </span>
           </span>
@@ -26,11 +20,7 @@
       </form>
 
       <div class="table-responsive rounded-start rounded-end">
-        <table
-          mat-table
-          [dataSource]="dataSource"
-          class="mat-elevation-z8 table demo-table align-middle"
-        >
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table demo-table align-middle">
           <!-- Position Column -->
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -70,262 +60,642 @@
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr
-            mat-row
-            (click)="clickRow(row)"
-            [class.demo-row-is-clicked]="patient == row"
-            [class.blink]="patient == row"
-            *matRowDef="let row; columns: displayedColumns"
-          ></tr>
+          <tr mat-row (click)="clickRow(row)" [class.demo-row-is-clicked]="patient == row"
+            [class.blink]="patient == row" *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
       </div>
-      <mat-paginator #paginatorSelectPatient [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons
-                 aria-label="Select page of periodic elements"
-                 >
-  </mat-paginator>
+      <mat-paginator #paginatorSelectPatient [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+        aria-label="Select page of periodic elements">
+      </mat-paginator>
       <!--/ Fim da tabela de pacientes -->
     </mat-step>
 
     <!-- Step 1 - Anamnese Geral -->
-    <mat-step [stepControl]="FormularioAnamneseGeral" label="Anamnese Geral">
-      <form
-        [formGroup]="FormularioAnamneseGeral"
-        class="row g-3 new-registration-form"
-      >
+    <mat-step [stepControl]="formularioAnamneseGeral" label="Anamnese Geral">
+      <form [formGroup]="formularioAnamneseGeral" class="row g-3 new-registration-form">
         <div class="col-md-5">
           <label for="paciente">Paciente:</label>
-          <input
-            type="text"
-            readonly
-            class="form-control disabled"
-            [value]="!!patient ? patient.nome : ''"
-          />
+          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.nome : ''" />
         </div>
 
         <div class="col-md-2">
           <label for="paciente">Raça:</label>
-          <input
-            type="text"
-            readonly
-            class="form-control disabled"
-            [value]="!!patient ? patient.raca : ''"
-          />
+          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.raca : ''" />
         </div>
 
         <div class="col-md-5">
           <label for="paciente">Proprietário:</label>
-          <input
-            type="text"
-            readonly
-            class="form-control disabled"
-            [value]="!!owner ? owner.nome : ''"
-          />
+          <input type="text" readonly class="form-control disabled" [value]="!!owner ? owner.nome : ''" />
         </div>
 
         <div class="col-md-12">
-          <label for="queixa-principal">Queixa principal</label>
-          <textarea
-            class="form-control"
-            placeholder="Nas palavas do proprietário"
-            id="queixa-principal"
-            style="height: 100px"
-            formControlName="queixaPrincipal"
-          ></textarea>
+          <div class="d-flex gap-2 mb-2">
+            <label for="queixa-principal">Queixa principal</label>
+            <span class="material-icons info" matTooltip="Nas palavras do proprietário">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control" placeholder="Nas palavas do proprietário" id="queixa-principal"
+            style="height: 100px" formControlName="queixaPrincipal"></textarea>
         </div>
 
         <div class="col-md-12">
-          <label for="historicoDoencaAtual">Histórico de doença atual</label>
-          <textarea
-            class="form-control"
-            placeholder="Início, apresentação, evolução, trat. prévio"
-            id="historicoDoencaAtual"
-            style="height: 100px"
-            formControlName="historicoDoencaAtual"
-          ></textarea>
+          <div class="d-flex gap-2 mb-2">
+            <label for="historicoDoencaAtual">Histórico de doença atual</label>
+            <span class="material-icons info" matTooltip="Início, apresentação, evolução, trat. prévio">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control" placeholder="Início, apresentação, evolução, trat. prévio"
+            id="historicoDoencaAtual" style="height: 100px" formControlName="historicoDoencaAtual"></textarea>
         </div>
 
         <div class="col-md-12">
-          <label for="antecedentesMorbidos">Antecedentes mórbidos</label>
-          <textarea
-            class="form-control"
-            placeholder="Doença já ocorridas, cirurgias, traumas, etc."
-            id="antecedentesMorbidos"
-            style="height: 100px"
-            formControlName="antecedentesMorbidos"
-          ></textarea>
+          <div class="d-flex gap-2 mb-2">
+            <label for="antecedentesMorbidos">Antecedentes mórbidos</label>
+            <span class="material-icons info" matTooltip="Doenças já ocorridas, cirurgias, traumas, etc.">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control" placeholder="Doença já ocorridas, cirurgias, traumas, etc."
+            id="antecedentesMorbidos" style="height: 100px" formControlName="antecedentesMorbidos"></textarea>
         </div>
 
         <div class="col-md-12">
-          <label for="CondicaoDeVida">Condição de vida</label>
-          <textarea
-            class="form-control"
+          <div class="d-flex gap-2 mb-2">
+            <label for="CondicaoDeVida">Condição de vida</label>
+            <span class="material-icons info"
+              matTooltip="Alimentação antes e depois da doença, habitação, coabitação, sistema de criação, etc">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control"
             placeholder="Alimentação  antes e depois da doença, habitação, coabitação, sistema de criação, etc."
-            id="CondicaoDeVida"
-            style="height: 100px"
-            formControlName="CondicaoDeVida"
-          ></textarea>
+            id="CondicaoDeVida" style="height: 100px" formControlName="CondicaoDeVida"></textarea>
         </div>
 
         <div class="col-md-12">
-          <label for="saudeConvivio"
-            >Saúde dos pais, irmãos e outros animais de convivio</label
-          >
-          <textarea
-            class="form-control"
-            placeholder="Descreva sobre"
-            id="saudeConvivio"
-            style="height: 100px"
-            formControlName="saudeConvivio"
-          ></textarea>
+          <div class="d-flex gap-2 mb-2">
+            <label for="saudeConvivio">Saúde dos pais, irmãos e outros animais de convivio</label>
+            <span class="material-icons info" matTooltip="Saúde dos pais, irmãos e outros animais de convívio">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control" placeholder="Descreva sobre" id="saudeConvivio" style="height: 100px"
+            formControlName="saudeConvivio"></textarea>
         </div>
       </form>
     </mat-step>
 
     <!-- Step 2 - Anamnese Especial -->
-    <mat-step [stepControl]="FormularioAnamneseEspecial" label="Anamnese Especial">
-      <form
-        [formGroup]="FormularioAnamneseEspecial"
-        class="row g-3 new-registration-form"
-      >
-      <div class="col-md-5">
-        <label for="paciente">Paciente:</label>
-        <input
-          type="text"
-          readonly
-          class="form-control disabled"
-          [value]="!!patient ? patient.nome : ''"
-        />
-      </div>
+    <mat-step [stepControl]="formularioAnamneseEspecial" label="Anamnese Especial">
+      <form [formGroup]="formularioAnamneseEspecial" class="row g-3 new-registration-form">
+        <div class="col-md-5">
+          <label for="paciente">Paciente:</label>
+          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.nome : ''" />
+        </div>
 
-      <div class="col-md-2">
-        <label for="paciente">Raça:</label>
-        <input
-          type="text"
-          readonly
-          class="form-control disabled"
-          [value]="!!patient ? patient.raca : ''"
-        />
-      </div>
+        <div class="col-md-2">
+          <label for="paciente">Raça:</label>
+          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.raca : ''" />
+        </div>
 
-      <div class="col-md-5">
-        <label for="paciente">Proprietário:</label>
-        <input
-          type="text"
-          readonly
-          class="form-control disabled"
-          [value]="!!owner ? owner.nome : ''"
-        />
-      </div>
+        <div class="col-md-5">
+          <label for="paciente">Proprietário:</label>
+          <input type="text" readonly class="form-control disabled" [value]="!!owner ? owner.nome : ''" />
+        </div>
 
         <!-- olhos -->
         <div class="col-md-12">
-          <label for="olhos">Olhos</label>
-          <textarea
-            class="form-control"
-            placeholder="Perturbações visuais, inflamações, etc."
-            id="olhos"
-            style="height: 100px"
-            formControlName="olhos"
-          ></textarea>
+          <div class="d-flex gap-2 mb-2">
+            <label for="olhos">Olhos</label>
+            <span class="material-icons info" matTooltip="Perturbações visuais, inflamações, etc.">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control" placeholder="Perturbações visuais, inflamações, etc." id="olhos"
+            style="height: 100px" formControlName="olhos"></textarea>
         </div>
 
         <!-- ouvidos -->
         <div class="col-md-12">
-          <label for="ouvidos">Ouvidos</label>
-          <textarea
-            class="form-control"
-            placeholder="Surdez, exsudato, dor, etc"
-            id="ouvidos"
-            style="height: 100px"
-            formControlName="ouvidos"
-          ></textarea>
+          <div class="d-flex gap-2 mb-2">
+            <label for="ouvidos">Ouvidos</label>
+            <span class="material-icons info" matTooltip="Surdez, exsudato, dor, etc.">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control" placeholder="Surdez, exsudato, dor, etc" id="ouvidos" style="height: 100px"
+            formControlName="ouvidos"></textarea>
         </div>
 
         <!-- sr -->
         <div class="col-md-12">
-          <label for="sr">S.R.</label>
-          <textarea
-            class="form-control"
+          <div class="d-flex gap-2 mb-2">
+            <label for="sr">S.R.</label>
+            <span class="material-icons info"
+              matTooltip="Exsudato, cor, aspecto, quantidade, cheiro, tosse, espirro, dificuldades respiratórias, etc.">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control"
             placeholder="Exsudato, cor, aspecto, quantidade, cheiro, tosse, espirro, dificuldades respiratórias, etc."
-            id="sr"
-            style="height: 100px"
-            formControlName="sr"
-          ></textarea>
+            id="sr" style="height: 100px" formControlName="sr"></textarea>
         </div>
 
         <!-- sc -->
         <div class="col-md-12">
-          <label for="sc">S.C</label>
-          <textarea
-            class="form-control"
-            placeholder="Dispnéia de esforço, edemas, hemorragias, sincapes, etc."
-            id="sc"
-            style="height: 100px"
-            formControlName="sc"
-          ></textarea>
+          <div class="d-flex gap-2 mb-2">
+            <label for="sc">S.C</label>
+            <span class="material-icons info" matTooltip="Dispnéia de esforço, edemas, hemorragias, síncopes, etc.">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control" placeholder="Dispnéia de esforço, edemas, hemorragias, sincapes, etc." id="sc"
+            style="height: 100px" formControlName="sc"></textarea>
         </div>
 
         <!-- sd -->
         <div class="col-md-12">
-          <label for="sd"
-            >S.D.</label
-          >
-          <textarea
-            class="form-control"
+          <div class="d-flex gap-2 mb-2">
+            <label for="sd">S.D.</label>
+            <span class="material-icons info"
+              matTooltip="Apetite, ingestão de água, mastigação, deglutição, regurgitação, vômito, dor, náuseas, frequência, cheiro, aspecto, função intestinal, parasitos nas fezes, hematemese, melena, icterícia, etc.">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control"
             placeholder="Apetite, ingestão de água, mastigação, deglutição, regurgitação, vômito, dor, náuseas, frequência, cheiro, aspecto, função intestinal, parasitas nas fezes, hematemese, melena, icterícia, etc."
-            id="sd"
-            style="height: 100px"
-            formControlName="sd"
-          ></textarea>
+            id="sd" style="height: 100px" formControlName="sd"></textarea>
         </div>
 
         <!-- sgu -->
         <div class="col-md-12">
-          <label for="sgu"
-            >S.G.U.</label
-          >
-          <textarea
-            class="form-control"
+          <div class="d-flex gap-2 mb-2">
+            <label for="sgu">S.G.U.</label>
+            <span class="material-icons info"
+              matTooltip="Inspeção da região lombar, palpação de área renal, bexiga, uretra, próstata, órgãos genitais externos, útero, vagina, mamas">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control"
             placeholder="Cio, regularidade, último aparecimento, duração, contraceptivos, gestação, partos, vida sexual, micções, desfunções de micção, coloração da urina, corrimentos vaginais, aspecto testicular, contração."
-            id="sgu"
-            style="height: 100px"
-            formControlName="sgu"
-          ></textarea>
+            id="sgu" style="height: 100px" formControlName="sgu"></textarea>
         </div>
 
         <!-- sn -->
         <div class="col-md-12">
-          <label for="sn"
-            >S.N.</label
-          >
-          <textarea
-            class="form-control"
+          <div class="d-flex gap-2 mb-2">
+            <label for="sn">S.N.</label>
+            <span class="material-icons info"
+              matTooltip="Paresia, tremores, convulsões, nervosismo, sonolência, mudanças de hábitos, psiquismo, incoordenação, etc.">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control"
             placeholder="Conduta psíquica, sensibilidade sup. e profunda. Motilidade: paresia, paralisia, mov. anômalos, ataxia, vertigem, atitudes e mov. involuntários, espasmos musculares, tonicidade e especto da musculatura. Excitabilidade dos nervos e músculos. Reflexos tendinosos, cutâneos e pupilares"
-            id="sn"
-            style="height: 100px"
-            formControlName="sn"
-          ></textarea>
+            id="sn" style="height: 100px" formControlName="sn"></textarea>
         </div>
 
         <!-- Historico Imunizacao -->
         <div class="col-md-12">
-          <label for="historicoImunização"
-            >Historico de Imunizacao</label
-          >
-          <textarea
-            class="form-control"
-            placeholder="Conduta psíquica, sensibilidade sup. e profunda. Motilidade: paresia, paralisia, mov. anômalos, ataxia, vertigem, atitudes e mov. involuntários, espasmos musculares, tonicidade e especto da musculatura. Excitabilidade dos nervos e músculos. Reflexos tendinosos, cutâneos e pupilares"
-            id="historicoImunizacao"
-            style="height: 100px"
-            formControlName="historicoImunizacao"
-          ></textarea>
+          <div class="d-flex gap-2 mb-2">
+            <label for="historicoImunização">Historico de Imunizacao</label>
+            <span class="material-icons info" matTooltip="Vacinas, quais e quando, por Veterinário?">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control" placeholder="Vacinas, quais e quando, por Veterinário?" style="height: 100px"
+            formControlName="historicoImunizacao"></textarea>
         </div>
 
       </form>
     </mat-step>
 
-    <mat-step  state="pets">
+    <!-- Step 3 - Exame Objetivo -->
+    <mat-step [stepControl]="formularioExameObjetivo" label="Exame Objetivo">
+      <form [formGroup]="formularioExameObjetivo" class="row g-3 new-registration-form">
+        <div class="col-md-5">
+          <label for="paciente">Paciente:</label>
+          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.nome : ''" />
+        </div>
+
+        <div class="col-md-2">
+          <label for="paciente">Raça:</label>
+          <input type="text" readonly class="form-control disabled" [value]="!!patient ? patient.raca : ''" />
+        </div>
+
+        <div class="col-md-5">
+          <label for="paciente">Proprietário:</label>
+          <input type="text" readonly class="form-control disabled" [value]="!!owner ? owner.nome : ''" />
+        </div>
+
+        <!-- Temperatúra Retal Cº  -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="temperaturaRetal">Temperatúra Retal Cº</label>
+            <span class="material-icons info" matTooltip="Informe a temperatúra em Graus Celsius.">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control" placeholder="Informe a temperatúra em Graus Celsius." id="temperaturaRetal"
+            style="height: 100px" formControlName="temperaturaRetal"></textarea>
+        </div>
+
+        <!-- Ectoscopia -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="ectoscopia">Ectoscopia</label>
+            <span class="material-icons info" matTooltip="Atitude, fáscies, estado psciquico, nutricional, esquelético, músculos, pele, pruridos, cor, cicatrizes, úlceras, grau de umidade, TPC, pelos, unhas, edemias, mucosas aparentes, grau de hidratação, extremidades,
+            articulações, coluna vertebral.">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control" placeholder="Atitude, fáscies, estado psciquico, nutricional, esquelético, músculos, pele, pruridos, cor, cicatrizes, úlceras, grau de umidade, TPC, pelos, unhas, edemias, mucosas aparentes, grau de hidratação, extremidades,
+          articulações, coluna vertebral." id="ectoscopia"
+           style="height: 100px"
+            formControlName="ectoscopia"></textarea>
+        </div>
+
+        <!-- S. R. Nariz -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="srNariz">S. R. Nariz</label>
+            <span class="material-icons info"
+              matTooltip="Fluxo nasal: uni ou bilateral, quantidade, cor, odor, consistência, corpos estranhos, fenômenos acusticos perceptíveis. Exame interno e externode seios nasais, laringe e traqueia. ">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control"
+            placeholder="Fluxo nasal: uni ou bilateral, quantidade, cor, odor, consistência, corpos estranhos, fenômenos acusticos perceptíveis. Exame interno e externode seios nasais, laringe e traqueia."
+            id="srNariz" style="height: 100px" formControlName="srNariz"></textarea>
+        </div>
+
+        <!-- S. R. Tórax (Inspeção) FR -->
+        <div class="col-md-6">
+          <div class="d-flex gap-2 mb-2">
+            <label for="srTorazInspecaoFr">S. R. Tórax (Inspeção) FR</label>
+            <span class="material-icons info" matTooltip="Inspeção">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control" placeholder="Inspeção" id="srTorazInspecaoFr"
+            style="height: 100px" formControlName="srTorazInspecaoFr"></textarea>
+        </div>
+
+        <!-- Tipo de movimento -->
+        <div class="col-md-6">
+          <div class="d-flex gap-2 mb-2">
+            <label for="tipoMovimento">Tipo de movimento</label>
+            <span class="material-icons info"
+              matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control"
+            placeholder=""
+            id="tipoMovimento" style="height: 100px" formControlName="tipoMovimento"></textarea>
+        </div>
+
+        <!-- Polpação -->
+        <div class="col-md-6">
+          <div class="d-flex gap-2 mb-2">
+            <label for="polpacao">Polpação</label>
+            <span class="material-icons info"
+              matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea class="form-control"
+            placeholder=""
+            id="polpacao" style="height: 100px" formControlName="polpacao"></textarea>
+        </div>
+
+        <!-- Percussão -->
+        <div class="col-md-6">
+          <div class="d-flex gap-2 mb-2">
+            <label for="percussao">Percussão</label>
+            <span class="material-icons info"
+              matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="percussao"
+            style="height: 100px"
+            formControlName="percussao"></textarea>
+        </div>
+
+        <!-- Ausculta pulmonar -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="aucusticaPulmonar">Ausculta pulmonar</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="aucusticaPulmonar"
+            style="height: 100px"
+            formControlName="aucusticaPulmonar"></textarea>
+        </div>
+
+        <!-- S. C. Coração -  FC -->
+        <div class="col-md-6">
+          <div class="d-flex gap-2 mb-2">
+            <label for="scCoracaoFc">S. C. Coração -  FC</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="scCoracaoFc"
+            style="height: 100px"
+            formControlName="scCoracaoFc"></textarea>
+        </div>
+
+        <!-- Ritmo -->
+        <div class="col-md-6">
+          <div class="d-flex gap-2 mb-2">
+            <label for="ritmo">Ritmo</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="ritmo"
+            style="height: 100px"
+            formControlName="ritmo"></textarea>
+        </div>
+
+        <!-- Ausculta e palpação -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="aucusticaPalpacao">Ausculta e palpação</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="aucusticaPalpacao"
+            style="height: 100px"
+            formControlName="aucusticaPalpacao"></textarea>
+        </div>
+
+        <!-- Pulso arterial -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="pulsoArterial">Pulso arterial</label>
+            <span class="material-icons info" matTooltip="Ritmo, frequência, tensão, plenitude.">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder="Ritmo, frequência, tensão, plenitude."
+            id="pulsoArterial"
+            style="height: 100px"
+            formControlName="pulsoArterial"></textarea>
+        </div>
+
+        <!-- Alterações vasculares -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="alteracoesVasculares">Alterações vasculares</label>
+            <span class="material-icons info" matTooltip="Hemorragias, disturbios de coagulação, etc.">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder="Hemorragias, disturbios de coagulação, etc."
+            id="alteracoesVasculares"
+            style="height: 100px"
+            formControlName="alteracoesVasculares"></textarea>
+        </div>
+
+        <!-- AS. H. L. Linfonodos -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="shlLifonodos">AS. H. L. Linfonodos</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="shlLifonodos"
+            style="height: 100px"
+            formControlName="shlLifonodos"></textarea>
+        </div>
+
+        <!-- Baço -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="baco">Baço</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="baco"
+            style="height: 100px"
+            formControlName="baco"></textarea>
+        </div>
+
+        <!-- S. D. Vias digestórias anteriores -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="sdViasDigestoriasAnteriores">S. D. Vias digestórias anteriores</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="sdViasDigestoriasAnteriores"
+            style="height: 100px"
+            formControlName="sdViasDigestoriasAnteriores"></textarea>
+        </div>
+
+        <!-- Abdome -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="abdomen">Abdome</label>
+            <span class="material-icons info" matTooltip="Inspeção, palpação, percussão">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder="Inspeção, palpação, percussão"
+            id="abdomen"
+            style="height: 100px"
+            formControlName="abdomen"></textarea>
+        </div>
+
+        <!-- Estômago -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="estomago">Estômago</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="estomago"
+            style="height: 100px"
+            formControlName="estomago"></textarea>
+        </div>
+
+        <!-- Intestinos -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="intestinos">Intestinos</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="intestinos"
+            style="height: 100px"
+            formControlName="intestinos"></textarea>
+        </div>
+
+        <!-- Fígado -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="figado">Fígado</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="figado"
+            style="height: 100px"
+            formControlName="figado"></textarea>
+        </div>
+
+        <!-- S. G. U. -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="sgu">S. G. U.</label>
+            <span class="material-icons info" matTooltip="Inspeção da região lombar, palpação de área renal, bexiga, uretra, próstata, órgãos genitais externos, útero, vagina, mamas.">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder="Inspeção da região lombar, palpação de área renal, bexiga, uretra, próstata, órgãos genitais externos, útero, vagina, mamas."
+            id="sgu"
+            style="height: 100px"
+            formControlName="sgu"></textarea>
+        </div>
+
+        <!-- S. N. -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="sn">S. N.</label>
+            <span class="material-icons info" matTooltip="Conduta psíquica, sensibilidade sup. e profunda. Motilidade: paresia, paralisia, mov. anomalos, ataxia, vertigem, atitudes e mov. involuntários, espasmos musculares, tonicidade e aspecto da musculatura. Excitabilidade dos nervos e músculos. Reflexos tendinosos, cutâneos e pupilares">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder="Conduta psíquica, sensibilidade sup. e profunda. Motilidade: paresia, paralisia, mov. anomalos, ataxia, vertigem, atitudes e mov. involuntários, espasmos musculares, tonicidade e aspecto da musculatura. Excitabilidade dos nervos e músculos. Reflexos tendinosos, cutâneos e pupilares"
+            id="sn"
+            style="height: 100px"
+            formControlName="sn"></textarea>
+        </div>
+
+        <!-- Órgãos dos sentidos. OLHOS e OUVIDOS -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="orgaosSentidosOlhosOuvidos">Órgãos dos sentidos. OLHOS e OUVIDOS</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="orgaosSentidosOlhosOuvidos"
+            style="height: 100px"
+            formControlName="orgaosSentidosOlhosOuvidos"></textarea>
+        </div>
+
+        <!-- Aparelho Locomotor -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="aparelhoLocomotor">Aparelho Locomotor</label>
+            <span class="material-icons info" matTooltip="Avaliação óssea, articular e tendinosa">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder="Avaliação óssea, articular e tendinosa"
+            id="aparelhoLocomotor"
+            style="height: 100px"
+            formControlName="aparelhoLocomotor"></textarea>
+        </div>
+
+        <!-- Apreciação dos Achados -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="apreciacaoAchados">Apreciação dos Achados</label>
+            <span class="material-icons info" matTooltip="">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="apreciacaoAchados"
+            style="height: 100px"
+            formControlName="apreciacaoAchados"></textarea>
+        </div>
+
+        <!-- Diagnóstico Provisório -->
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="diagProvisorio">Diagnóstico Provisório</label>
+            <span class="material-icons info" matTooltip="Suspeitas Clínicas">
+              info_outline
+            </span>
+          </div>
+          <textarea
+            class="form-control"
+            placeholder=""
+            id="diagProvisorio"
+            style="height: 100px"
+            formControlName="diagProvisorio"></textarea>
+        </div>
+
+      </form>
+    </mat-step>
+
+    <mat-step state="pets">
       <div class="my-4">
         <ng-template matStepLabel>Done</ng-template>
         <p>You are now done.</p>
@@ -345,12 +715,7 @@
   </mat-stepper>
 </div>
 <div mat-dialog-actions align="center" class="gap-2">
-  <button
-    [@fade]
-    class="btn btn-secondary"
-    *ngIf="this.stepper.selectedIndex > 0"
-    (click)="back()"
-  >
+  <button [@fade] class="btn btn-secondary" *ngIf="this.stepper.selectedIndex > 0" (click)="back()">
     Voltar
   </button>
   <button class="btn btn-success" [disabled]="!patient" (click)="next()">

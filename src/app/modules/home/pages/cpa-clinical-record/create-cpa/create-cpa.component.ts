@@ -30,8 +30,9 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
   @ViewChild('paginatorSelectPatient') paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  FormularioAnamneseGeral!: FormGroup;
-  FormularioAnamneseEspecial!: FormGroup;
+  formularioAnamneseGeral!: FormGroup;
+  formularioAnamneseEspecial!: FormGroup;
+  formularioExameObjetivo!: FormGroup;
   isLinear = true;
 
   // TABELA DE PACIENTES
@@ -46,7 +47,7 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.getPatients();
 
-    this.FormularioAnamneseGeral = this._formBuilder.group({
+    this.formularioAnamneseGeral = this._formBuilder.group({
       queixaPrincipal: ['', Validators.required],
       historicoDoencaAtual: ['', Validators.required],
       antecedentesMorbidos: ['', Validators.required],
@@ -55,7 +56,7 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
       paciente: ['', Validators.required]
     });
 
-    this.FormularioAnamneseEspecial = this._formBuilder.group({
+    this.formularioAnamneseEspecial = this._formBuilder.group({
       olhos: ['', Validators.required],
       ouvidos: ['', Validators.required],
       sr: ['', Validators.required],
@@ -64,6 +65,36 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
       sgu: ['', Validators.required],
       sn: ['', Validators.required],
       historicoImunizacao: ['', Validators.required],
+      paciente: ['', Validators.required]
+    });
+
+    this.formularioExameObjetivo = this._formBuilder.group({
+      temperaturaRetal: ['', Validators.required],
+      ectoscopia: ['', Validators.required],
+      srNariz: ['', Validators.required],
+      srTorazInspecaoFr: ['', Validators.required],
+      tipoMovimento: ['', Validators.required],
+      polpacao: ['', Validators.required],
+      percussao: ['', Validators.required],
+      aucusticaPulmonar: ['', Validators.required],
+      scCoracaoFc: ['', Validators.required],
+      ritmo: ['', Validators.required],
+      aucusticaPalpacao: ['', Validators.required],
+      pulsoArterial: ['', Validators.required],
+      alteracoesVasculares: ['', Validators.required],
+      shlLifonodos: ['', Validators.required],
+      baco: ['', Validators.required],
+      sdViasDigestoriasAnteriores: ['', Validators.required],
+      abdomen: ['', Validators.required],
+      estomago: ['', Validators.required],
+      intestinos: ['', Validators.required],
+      figado: ['', Validators.required],
+      sgu: ['', Validators.required],
+      sn: ['', Validators.required],
+      orgaosSentidosOlhosOuvidos: ['', Validators.required],
+      aparelhoLocomotor: ['', Validators.required],
+      apreciacaoAchados: ['', Validators.required],
+      diagProvisorio: ['', Validators.required],
       paciente: ['', Validators.required]
     })
   }
@@ -106,7 +137,7 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
 
   next(){
     this.stepper.next();
-    this.FormularioAnamneseGeral.get('paciente')?.setValue(this.patient);
+    this.formularioAnamneseGeral.get('paciente')?.setValue(this.patient);
   }
 
   back(){

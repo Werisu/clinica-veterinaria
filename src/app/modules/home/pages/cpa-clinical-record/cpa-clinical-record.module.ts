@@ -8,7 +8,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatStepperModule } from '@angular/material/stepper';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { CpaClinicalRecordRoutingModule } from './cpa-clinical-record-routing.module';
 import { CpaClinicalRecordComponent } from './cpa-clinical-record.component';
 import { CpaTableComponent } from './cpa-table/cpa-table.component';
@@ -34,7 +34,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
   ],
   exports: [
     CpaClinicalRecordComponent,

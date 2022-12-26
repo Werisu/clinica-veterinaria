@@ -52,3 +52,6 @@
 .disabled{
   background-color: var(--bs-gray-300);
 }
+.info{
+  cursor: default;
+}
