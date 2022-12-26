@@ -9,15 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Owner } from 'src/app/core/interfaces/owner';
-
-/* TABELA DE PACIENTES */
-export interface PeriodicElement {
-  id: number;
-  name: string;
-  idade: string;
-  especie: string;
-}
-/* FIM DA TABELA DE PACIENTES */
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-create-cpa',
@@ -25,6 +17,12 @@ export interface PeriodicElement {
   styleUrls: ['./create-cpa.component.css'],
   animations: [
     Fade
+  ],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {displayDefaultIndicatorType: false},
+    },
   ]
 })
 export class CreateCpaComponent implements OnInit, AfterViewInit {
@@ -32,9 +30,6 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
   @ViewChild('paginatorSelectPatient') paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  selecaoPaciente = this._formBuilder.group({
-    saerch: ['', Validators.required],
-  });
   FormularioAnamneseGeral!: FormGroup;
   FormularioAnamneseEspecial!: FormGroup;
   isLinear = true;

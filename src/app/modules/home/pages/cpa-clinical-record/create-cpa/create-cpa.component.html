@@ -6,11 +6,10 @@
 <div mat-dialog-content>
   <mat-stepper [linear]="isLinear" #stepper>
     <!-- Step 0 - seleção de paciente -->
-    <mat-step [stepControl]="selecaoPaciente" state="paciente">
-      <ng-template matStepLabel>Seleção de Paciente</ng-template>
+    <mat-step label="Seleção de Paciente" state="pets">
 
       <!-- Tabela de pacientes -->
-      <form [formGroup]="selecaoPaciente">
+      <form>
         <div class="input-group flex-nowrap my-4">
           <input
             type="text"
@@ -19,7 +18,6 @@
             aria-label="Nome do paciente"
             aria-describedby="addon-wrapping"
             (keyup)="applyFilter($event)"
-            formControlName="saerch"
           />
           <span class="d-flex align-items-center border rounded-end">
             <span class="material-icons"> search </span>
@@ -225,7 +223,7 @@
           <label for="olhos">Olhos</label>
           <textarea
             class="form-control"
-            placeholder="Nas palavas do proprietário"
+            placeholder="Perturbações visuais, inflamações, etc."
             id="olhos"
             style="height: 100px"
             formControlName="olhos"
@@ -237,7 +235,7 @@
           <label for="ouvidos">Ouvidos</label>
           <textarea
             class="form-control"
-            placeholder="Início, apresentação, evolução, trat. prévio"
+            placeholder="Surdez, exsudato, dor, etc"
             id="ouvidos"
             style="height: 100px"
             formControlName="ouvidos"
@@ -249,7 +247,7 @@
           <label for="sr">S.R.</label>
           <textarea
             class="form-control"
-            placeholder="Doença já ocorridas, cirurgias, traumas, etc."
+            placeholder="Exsudato, cor, aspecto, quantidade, cheiro, tosse, espirro, dificuldades respiratórias, etc."
             id="sr"
             style="height: 100px"
             formControlName="sr"
@@ -261,7 +259,7 @@
           <label for="sc">S.C</label>
           <textarea
             class="form-control"
-            placeholder="Alimentação  antes e depois da doença, habitação, coabitação, sistema de criação, etc."
+            placeholder="Dispnéia de esforço, edemas, hemorragias, sincapes, etc."
             id="sc"
             style="height: 100px"
             formControlName="sc"
@@ -275,7 +273,7 @@
           >
           <textarea
             class="form-control"
-            placeholder="Descreva sobre"
+            placeholder="Apetite, ingestão de água, mastigação, deglutição, regurgitação, vômito, dor, náuseas, frequência, cheiro, aspecto, função intestinal, parasitas nas fezes, hematemese, melena, icterícia, etc."
             id="sd"
             style="height: 100px"
             formControlName="sd"
@@ -289,7 +287,7 @@
           >
           <textarea
             class="form-control"
-            placeholder="Descreva sobre"
+            placeholder="Cio, regularidade, último aparecimento, duração, contraceptivos, gestação, partos, vida sexual, micções, desfunções de micção, coloração da urina, corrimentos vaginais, aspecto testicular, contração."
             id="sgu"
             style="height: 100px"
             formControlName="sgu"
@@ -298,26 +296,26 @@
 
         <!-- sn -->
         <div class="col-md-12">
-          <label for="sd"
+          <label for="sn"
             >S.N.</label
           >
           <textarea
             class="form-control"
-            placeholder="Descreva sobre"
-            id="sd"
+            placeholder="Conduta psíquica, sensibilidade sup. e profunda. Motilidade: paresia, paralisia, mov. anômalos, ataxia, vertigem, atitudes e mov. involuntários, espasmos musculares, tonicidade e especto da musculatura. Excitabilidade dos nervos e músculos. Reflexos tendinosos, cutâneos e pupilares"
+            id="sn"
             style="height: 100px"
-            formControlName="sd"
+            formControlName="sn"
           ></textarea>
         </div>
 
         <!-- Historico Imunizacao -->
         <div class="col-md-12">
-          <label for="historicoImunizacao"
-            >Historico Imunizacao</label
+          <label for="historicoImunização"
+            >Historico de Imunizacao</label
           >
           <textarea
             class="form-control"
-            placeholder="Descreva sobre"
+            placeholder="Conduta psíquica, sensibilidade sup. e profunda. Motilidade: paresia, paralisia, mov. anômalos, ataxia, vertigem, atitudes e mov. involuntários, espasmos musculares, tonicidade e especto da musculatura. Excitabilidade dos nervos e músculos. Reflexos tendinosos, cutâneos e pupilares"
             id="historicoImunizacao"
             style="height: 100px"
             formControlName="historicoImunizacao"
@@ -327,7 +325,7 @@
       </form>
     </mat-step>
 
-    <mat-step>
+    <mat-step  state="pets">
       <div class="my-4">
         <ng-template matStepLabel>Done</ng-template>
         <p>You are now done.</p>
@@ -338,8 +336,11 @@
       </div>
     </mat-step>
 
-    <ng-template matStepperIcon="paciente">
-      <span class="material-icons"> pets </span>
+    <!-- Icon overrides. -->
+    <ng-template matStepperIcon="pets">
+      <span class="material-icons" style="font-size: 16px;">
+        pets
+      </span>
     </ng-template>
   </mat-stepper>
 </div>
