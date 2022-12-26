@@ -1,3 +1,4 @@
+import { Fade } from './../../../../../core/animation/animations/fade.animation';
 import { Patient } from 'src/app/core/interfaces/patient';
 import { PatientService } from './../../../../../core/services/patient.service';
 import { Patients } from './../../../../../core/interfaces/patient';
@@ -21,7 +22,10 @@ export interface PeriodicElement {
 @Component({
   selector: 'app-create-cpa',
   templateUrl: './create-cpa.component.html',
-  styleUrls: ['./create-cpa.component.css']
+  styleUrls: ['./create-cpa.component.css'],
+  animations: [
+    Fade
+  ]
 })
 export class CreateCpaComponent implements OnInit, AfterViewInit {
   @ViewChild('stepper') stepper!: MatStepper;

@@ -202,6 +202,7 @@
 </div>
 <div mat-dialog-actions align="center" class="gap-2">
   <button
+    [@fade]
     class="btn btn-secondary"
     *ngIf="this.stepper.selectedIndex > 0"
     (click)="back()"
