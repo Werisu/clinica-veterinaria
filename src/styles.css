@@ -27,3 +27,30 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-mdc-header-row .mat-mdc-header-cell {
   color: white;
 }
+
+/*=== scroll ===*/
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  position: absolute;
+  right: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 5px var(--color-gray);
+  border-radius: 0; */
+  background-color: var(--dark-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--secundary-color);
+  border-radius: 0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* background: blue; */
+}

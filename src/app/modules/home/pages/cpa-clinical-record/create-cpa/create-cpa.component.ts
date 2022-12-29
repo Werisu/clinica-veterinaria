@@ -1,8 +1,16 @@
+import { CpaService } from './../../../../../core/services/cpa.service';
 import { Fade } from './../../../../../core/animation/animations/fade.animation';
 import { Patient } from 'src/app/core/interfaces/patient';
 import { PatientService } from './../../../../../core/services/patient.service';
 import { Patients } from './../../../../../core/interfaces/patient';
-import { Component, ViewChild, OnInit, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  OnInit,
+  ChangeDetectorRef,
+  AfterViewInit,
+  Inject,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,42 +18,61 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Owner } from 'src/app/core/interfaces/owner';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { AnamneseGeral } from 'src/app/core/interfaces/cpa-clinical-record-interfaces/cpa-table';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-cpa',
   templateUrl: './create-cpa.component.html',
   styleUrls: ['./create-cpa.component.css'],
-  animations: [
-    Fade
-  ],
+  animations: [Fade],
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: {displayDefaultIndicatorType: false},
+      useValue: { displayDefaultIndicatorType: false },
     },
-  ]
+  ],
 })
 export class CreateCpaComponent implements OnInit, AfterViewInit {
   @ViewChild('stepper') stepper!: MatStepper;
   @ViewChild('paginatorSelectPatient') paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  formularioPaciente!: FormGroup;
   formularioAnamneseGeral!: FormGroup;
   formularioAnamneseEspecial!: FormGroup;
   formularioExameObjetivo!: FormGroup;
   isLinear = true;
 
   // TABELA DE PACIENTES
-  displayedColumns: string[] = ['id', 'nome', 'idade', 'especie', 'sexo', 'proprietario'];
+  displayedColumns: string[] = [
+    'id',
+    'nome',
+    'idade',
+    'especie',
+    'sexo',
+    'proprietario',
+  ];
   patients: Patients = [];
   dataSource!: MatTableDataSource<Patient>;
   patient?: Patient;
   owner!: Owner;
 
-  constructor(private _formBuilder: FormBuilder, private patientsService: PatientService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private patientsService: PatientService,
+    private cdr: ChangeDetectorRef,
+    private cpaService: CpaService,
+    private dialogRef: MatDialogRef<CreateCpaComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
   ngOnInit(): void {
     this.getPatients();
+
+    this.formularioPaciente = this._formBuilder.group({
+      pacienteSearch: ['', Validators.required],
+    });
 
     this.formularioAnamneseGeral = this._formBuilder.group({
       queixaPrincipal: ['', Validators.required],
@@ -53,7 +80,7 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
       antecedentesMorbidos: ['', Validators.required],
       CondicaoDeVida: ['', Validators.required],
       saudeConvivio: ['', Validators.required],
-      paciente: ['', Validators.required]
+      paciente: ['', Validators.required],
     });
 
     this.formularioAnamneseEspecial = this._formBuilder.group({
@@ -65,7 +92,7 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
       sgu: ['', Validators.required],
       sn: ['', Validators.required],
       historicoImunizacao: ['', Validators.required],
-      paciente: ['', Validators.required]
+      anamneseGeral: ['', Validators.required],
     });
 
     this.formularioExameObjetivo = this._formBuilder.group({
@@ -95,17 +122,15 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
       aparelhoLocomotor: ['', Validators.required],
       apreciacaoAchados: ['', Validators.required],
       diagProvisorio: ['', Validators.required],
-      paciente: ['', Validators.required]
-    })
+      anamneseGeral: ['', Validators.required],
+    });
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit() {}
 
-  }
-
-  getPatients(){
+  getPatients() {
     this.patientsService.getAll().subscribe({
-      next: patients => {
+      next: (patients) => {
         this.patients = patients;
         this.dataSource = new MatTableDataSource(patients);
 
@@ -116,8 +141,8 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
         this.paginator._intl.lastPageLabel = 'Última página';
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      }
-    })
+      },
+    });
   }
 
   applyFilter(event: Event) {
@@ -129,18 +154,42 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
     }
   }
 
-  clickRow(row: Patient){
-    this.isLinear = false
+  clickRow(row: Patient) {
+    // this.isLinear = false;
     this.patient = row;
     this.owner = row.proprietario;
+    this.formularioPaciente.get('pacienteSearch')?.setValue(row.nome);
   }
 
-  next(){
+  next(step: number) {
     this.stepper.next();
     this.formularioAnamneseGeral.get('paciente')?.setValue(this.patient);
+    this.post(step);
   }
 
-  back(){
+  back() {
     this.stepper.previous();
+  }
+
+  post(step: number) {
+    if (step == 1) {
+      let anamneseGeral =
+        this.formularioAnamneseGeral.getRawValue() as AnamneseGeral;
+      this.cpaService.postAnamnseGeral(anamneseGeral).subscribe({
+        next: (anamneseGeral) => {
+          this.dialogRef.close(true);
+        },
+      });
+    }
+  }
+
+  disableNext(step: number): boolean {
+    if (step == 0) {
+      return !this.patient;
+    } else if (step == 1) {
+      return this.formularioAnamneseGeral.invalid;
+    } else {
+      return false;
+    }
   }
 }

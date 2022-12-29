@@ -1,3 +1,4 @@
+import { ViewCpaComponent } from './view-cpa/view-cpa.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,13 +15,14 @@ import { CpaClinicalRecordComponent } from './cpa-clinical-record.component';
 import { CpaTableComponent } from './cpa-table/cpa-table.component';
 import { CreateCpaComponent } from './create-cpa/create-cpa.component';
 import { MatIconModule } from '@angular/material/icon';
-
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
     CpaClinicalRecordComponent,
     CpaTableComponent,
-    CreateCpaComponent
+    CreateCpaComponent,
+    ViewCpaComponent
   ],
   imports: [
     CommonModule,
@@ -35,11 +37,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatIconModule,
     MatPaginatorModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTabsModule
   ],
   exports: [
-    CpaClinicalRecordComponent,
-    CpaTableComponent
+    CpaClinicalRecordComponent
   ]
 })
 export class CpaClinicalRecordModule { }

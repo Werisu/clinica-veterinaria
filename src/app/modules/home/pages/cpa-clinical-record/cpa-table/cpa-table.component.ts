@@ -2,7 +2,7 @@ import { CreateCpaComponent } from './../create-cpa/create-cpa.component';
 import { CpaService } from './../../../../../core/services/cpa.service';
 import { ChangeDetectorRef, Component, Input, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { Cpa, Cpas } from 'src/app/core/interfaces/cpa-clinical-record-interfaces/cpa-table';
+import { Cpa, Cpas, AnamneseGeral } from 'src/app/core/interfaces/cpa-clinical-record-interfaces/cpa-table';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
@@ -17,7 +17,7 @@ export class CpaTableComponent implements OnInit {
   @Input() inputHTML: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  public cpa: Cpas = [];
+  public cpa: AnamneseGeral[] = [];
 
   public moment = moment;
 
@@ -50,7 +50,7 @@ export class CpaTableComponent implements OnInit {
   }
 
   public getCpa(){
-    this.cpaService.getPatientOwner().subscribe({
+    this.cpaService.getAnamnseGeral().subscribe({
       next: cpaTable => {
         this.cpa = cpaTable;
         this.dataSource.data = cpaTable;

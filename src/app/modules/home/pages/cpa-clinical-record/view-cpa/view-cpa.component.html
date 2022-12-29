@@ -1,0 +1,80 @@
+<mat-tab-group>
+
+  <mat-tab label="Anamnese Geral">
+    <div class="container-fluid my-2 d-flex flex-column gap-4">
+      <form [formGroup]="formularioAnamneseGeral" class="row g-3 new-registration-form">
+
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="queixa-principal">Queixa principal</label>
+            <span class="material-icons info" matTooltip="Nas palavras do proprietário">
+              info_outline
+            </span>
+          </div>
+          <textarea [readOnly]="true" class="form-control" placeholder="Nas palavas do proprietário" id="queixa-principal"
+            style="height: 100px" formControlName="queixaPrincipal"></textarea>
+        </div>
+
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="historicoDoencaAtual">Histórico de doença atual</label>
+            <span class="material-icons info" matTooltip="Início, apresentação, evolução, trat. prévio">
+              info_outline
+            </span>
+          </div>
+          <textarea [readOnly]="true" class="form-control" placeholder="Início, apresentação, evolução, trat. prévio"
+            id="historicoDoencaAtual" style="height: 100px" formControlName="historicoDoencaAtual"></textarea>
+        </div>
+
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="antecedentesMorbidos">Antecedentes mórbidos</label>
+            <span class="material-icons info" matTooltip="Doenças já ocorridas, cirurgias, traumas, etc.">
+              info_outline
+            </span>
+          </div>
+          <textarea [readOnly]="true" class="form-control" placeholder="Doença já ocorridas, cirurgias, traumas, etc."
+            id="antecedentesMorbidos" style="height: 100px" formControlName="antecedentesMorbidos"></textarea>
+        </div>
+
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="CondicaoDeVida">Condição de vida</label>
+            <span class="material-icons info"
+              matTooltip="Alimentação antes e depois da doença, habitação, coabitação, sistema de criação, etc">
+              info_outline
+            </span>
+          </div>
+          <textarea [readOnly]="true" class="form-control"
+            placeholder="Alimentação  antes e depois da doença, habitação, coabitação, sistema de criação, etc."
+            id="CondicaoDeVida" style="height: 100px" formControlName="CondicaoDeVida"></textarea>
+        </div>
+
+        <div class="col-md-12">
+          <div class="d-flex gap-2 mb-2">
+            <label for="saudeConvivio">Saúde dos pais, irmãos e outros animais de convivio</label>
+            <span class="material-icons info" matTooltip="Saúde dos pais, irmãos e outros animais de convívio">
+              info_outline
+            </span>
+          </div>
+          <textarea [readOnly]="true" class="form-control" placeholder="Descreva sobre" id="saudeConvivio" style="height: 100px"
+            formControlName="saudeConvivio"></textarea>
+        </div>
+      </form>
+
+      <div class="actions">
+        <button class="btn btn-primary d-flex">
+          <span class="material-icons">edit</span>
+          <span>Editar</span>
+        </button>
+      </div>
+    </div>
+  </mat-tab>
+
+
+  <mat-tab label="Anamnese Especial"> Content 2 </mat-tab>
+  <mat-tab label="Exame Objetivo"> Content 3 </mat-tab>
+  <mat-tab label="Exames Complementares"> Content 3 </mat-tab>
+  <mat-tab label="Conclusões"> Content 3 </mat-tab>
+  <mat-tab label="Observações"> Content 3 </mat-tab>
+</mat-tab-group>

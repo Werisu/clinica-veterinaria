@@ -206,5 +206,33 @@
       "id": 6
     }
   ],
-  "cpa": []
+  "cpa": [],
+  "anamneseGeral": [
+    {
+      "queixaPrincipal": "Não quer comer",
+      "historicoDoencaAtual": "Nada consta",
+      "antecedentesMorbidos": "Nada consta",
+      "CondicaoDeVida": "Antes da doença comia normal, agora não se alimenta direito",
+      "saudeConvivio": "normais",
+      "paciente": {
+        "nome": "Rodolf",
+        "especie": "Gato",
+        "fc": "456951",
+        "idade": 1,
+        "sexo": "Macho",
+        "raca": "persa",
+        "cor": "marrom",
+        "peso": "2.00",
+        "proprietario": {
+          "id": 2,
+          "nome": "Maria Eduarda Dos Santos Penalva",
+          "cpf": "62525541200",
+          "email": "mariaeduardadossantos551@gmail.com",
+          "telephone": "63992949666"
+        },
+        "id": 5
+      },
+      "id": 1
+    }
+  ]
 }

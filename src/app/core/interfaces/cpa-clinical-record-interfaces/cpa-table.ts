@@ -31,7 +31,7 @@ export interface AnamneseEspecial {
   sgu: string
   sn: string
   historicoImunizacao: string
-  paciente: Patient
+  anamneseGeral: AnamneseGeral
 }
 
 export interface ExameObjetivo {
@@ -62,14 +62,14 @@ export interface ExameObjetivo {
   aparelhoLocomotor: string
   apreciacaoAchados: string
   diagProvisorio: string
-  paciente: Patient
+  anamneseGeral: AnamneseGeral
 }
 
 export interface ExamesComplementares {
   id?: number
   examesComplementares: string
   anexo: string
-  paciente: Patient
+  anamneseGeral: AnamneseGeral
 }
 
 export interface Conclusoes {
@@ -80,7 +80,7 @@ export interface Conclusoes {
   tratamentoPrescrito: string
   obs: string
   medicacoes_prescritas: MedicacoesPrescritas
-  paciente: Patient
+  anamneseGeral: AnamneseGeral
 }
 
 export interface MedicacoesPrescritas {
@@ -88,5 +88,5 @@ export interface MedicacoesPrescritas {
   nomeRemedio: string
   dose: string
   frequencia: string
-  duracao: string
+  anamneseGeral: AnamneseGeral
 }

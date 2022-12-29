@@ -6,12 +6,12 @@
 <div mat-dialog-content>
   <mat-stepper [linear]="isLinear" #stepper>
     <!-- Step 0 - seleção de paciente -->
-    <mat-step label="Seleção de Paciente" state="pets">
+    <mat-step [stepControl]="formularioPaciente" label="Seleção de Paciente" state="pets">
 
       <!-- Tabela de pacientes -->
-      <form>
+      <form [formGroup]="formularioPaciente">
         <div class="input-group flex-nowrap my-4">
-          <input type="text" class="form-control border-end-0" placeholder="Digite o nome do paciente"
+          <input formControlName="pacienteSearch" type="text" class="form-control border-end-0" placeholder="Digite o nome do paciente"
             aria-label="Nome do paciente" aria-describedby="addon-wrapping" (keyup)="applyFilter($event)" />
           <span class="d-flex align-items-center border rounded-end">
             <span class="material-icons"> search </span>
@@ -321,8 +321,7 @@
               info_outline
             </span>
           </div>
-          <textarea class="form-control" placeholder="Informe a temperatúra em Graus Celsius." id="temperaturaRetal"
-            style="height: 100px" formControlName="temperaturaRetal"></textarea>
+          <input type="text" class="form-control" placeholder="Informe a temperatúra em Graus Celsius." id="temperaturaRetal" formControlName="temperaturaRetal">
         </div>
 
         <!-- Ectoscopia -->
@@ -334,8 +333,7 @@
               info_outline
             </span>
           </div>
-          <textarea class="form-control" placeholder="Atitude, fáscies, estado psciquico, nutricional, esquelético, músculos, pele, pruridos, cor, cicatrizes, úlceras, grau de umidade, TPC, pelos, unhas, edemias, mucosas aparentes, grau de hidratação, extremidades,
-          articulações, coluna vertebral." id="ectoscopia"
+          <textarea class="form-control" placeholder="Atitude, fáscies, estado psciquico, nutricional, esquelético, músculos, pele, pruridos, cor, cicatrizes, úlceras, grau de umidade, TPC, pelos, unhas, edemias, mucosas aparentes, grau de hidratação, extremidades, articulações, coluna vertebral." id="ectoscopia"
            style="height: 100px"
             formControlName="ectoscopia"></textarea>
         </div>
@@ -362,8 +360,7 @@
               info_outline
             </span>
           </div>
-          <textarea class="form-control" placeholder="Inspeção" id="srTorazInspecaoFr"
-            style="height: 100px" formControlName="srTorazInspecaoFr"></textarea>
+          <input type="text" class="form-control" placeholder="Inspeção" id="srTorazInspecaoFr" formControlName="srTorazInspecaoFr">
         </div>
 
         <!-- Tipo de movimento -->
@@ -375,9 +372,7 @@
               info_outline
             </span>
           </div>
-          <textarea class="form-control"
-            placeholder=""
-            id="tipoMovimento" style="height: 100px" formControlName="tipoMovimento"></textarea>
+          <input type="text" class="form-control" placeholder="" id="tipoMovimento" formControlName="tipoMovimento">
         </div>
 
         <!-- Polpação -->
@@ -389,9 +384,8 @@
               info_outline
             </span>
           </div>
-          <textarea class="form-control"
-            placeholder=""
-            id="polpacao" style="height: 100px" formControlName="polpacao"></textarea>
+          <input type="text" class="form-control" placeholder=""
+            id="polpacao" formControlName="polpacao">
         </div>
 
         <!-- Percussão -->
@@ -403,12 +397,12 @@
               info_outline
             </span>
           </div>
-          <textarea
+          <input
+            type="text"
             class="form-control"
             placeholder=""
             id="percussao"
-            style="height: 100px"
-            formControlName="percussao"></textarea>
+            formControlName="percussao">
         </div>
 
         <!-- Ausculta pulmonar -->
@@ -435,12 +429,12 @@
               info_outline
             </span>
           </div>
-          <textarea
+          <input
+            type="text"
             class="form-control"
             placeholder=""
             id="scCoracaoFc"
-            style="height: 100px"
-            formControlName="scCoracaoFc"></textarea>
+            formControlName="scCoracaoFc">
         </div>
 
         <!-- Ritmo -->
@@ -451,12 +445,12 @@
               info_outline
             </span>
           </div>
-          <textarea
+          <input
+            type="text"
             class="form-control"
             placeholder=""
             id="ritmo"
-            style="height: 100px"
-            formControlName="ritmo"></textarea>
+            formControlName="ritmo">
         </div>
 
         <!-- Ausculta e palpação -->
@@ -467,12 +461,12 @@
               info_outline
             </span>
           </div>
-          <textarea
+          <input
+            type="text"
             class="form-control"
             placeholder=""
             id="aucusticaPalpacao"
-            style="height: 100px"
-            formControlName="aucusticaPalpacao"></textarea>
+            formControlName="aucusticaPalpacao">
         </div>
 
         <!-- Pulso arterial -->
@@ -515,12 +509,12 @@
               info_outline
             </span>
           </div>
-          <textarea
+          <input
+            type="text"
             class="form-control"
             placeholder=""
             id="shlLifonodos"
-            style="height: 100px"
-            formControlName="shlLifonodos"></textarea>
+            formControlName="shlLifonodos">
         </div>
 
         <!-- Baço -->
@@ -531,12 +525,12 @@
               info_outline
             </span>
           </div>
-          <textarea
+          <input
+            type="text"
             class="form-control"
             placeholder=""
             id="baco"
-            style="height: 100px"
-            formControlName="baco"></textarea>
+            formControlName="baco">
         </div>
 
         <!-- S. D. Vias digestórias anteriores -->
@@ -547,12 +541,12 @@
               info_outline
             </span>
           </div>
-          <textarea
+          <input
+            type="text"
             class="form-control"
             placeholder=""
             id="sdViasDigestoriasAnteriores"
-            style="height: 100px"
-            formControlName="sdViasDigestoriasAnteriores"></textarea>
+            formControlName="sdViasDigestoriasAnteriores">
         </div>
 
         <!-- Abdome -->
@@ -579,12 +573,12 @@
               info_outline
             </span>
           </div>
-          <textarea
+          <input
+            type="text"
             class="form-control"
             placeholder=""
             id="estomago"
-            style="height: 100px"
-            formControlName="estomago"></textarea>
+            formControlName="estomago">
         </div>
 
         <!-- Intestinos -->
@@ -595,12 +589,12 @@
               info_outline
             </span>
           </div>
-          <textarea
+          <input
+            type="text"
             class="form-control"
             placeholder=""
             id="intestinos"
-            style="height: 100px"
-            formControlName="intestinos"></textarea>
+            formControlName="intestinos">
         </div>
 
         <!-- Fígado -->
@@ -611,12 +605,12 @@
               info_outline
             </span>
           </div>
-          <textarea
+          <input
+            type="text"
             class="form-control"
             placeholder=""
             id="figado"
-            style="height: 100px"
-            formControlName="figado"></textarea>
+            formControlName="figado">
         </div>
 
         <!-- S. G. U. -->
@@ -741,7 +735,7 @@
   <button [@fade] class="btn btn-secondary" *ngIf="this.stepper.selectedIndex > 0" (click)="back()">
     Voltar
   </button>
-  <button class="btn btn-success" [disabled]="!patient" (click)="next()">
+  <button class="btn btn-primary" [disabled]="disableNext(this.stepper.selectedIndex)" (click)="next(this.stepper.selectedIndex)">
     Próximo
   </button>
 </div>
