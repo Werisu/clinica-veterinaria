@@ -1,3 +1,4 @@
+import { Fade } from './../../../../../core/animation/animations/fade.animation';
 import { PatientService } from './../../../../../core/services/patient.service';
 import { Owner, Owners } from './../../../../../core/interfaces/owner';
 import { OwnersService } from 'src/app/core/services/owners.service';
@@ -7,18 +8,21 @@ import {
   Observable,
   OperatorFunction,
   debounceTime,
-  distinctUntilChanged,
   map,
 } from 'rxjs';
-import { CpfCnpjValidator } from 'src/app/core/helpers/cpf-cnpj-validator';
 import { Patient } from 'src/app/core/interfaces/patient';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NewRegistrationComponent } from '../../users/new-registration/new-registration.component';
+import { SlideInOutAnimation } from 'src/app/core/animation';
 
 @Component({
   selector: 'app-create-patient',
   templateUrl: './create-patient.component.html',
   styleUrls: ['./create-patient.component.css'],
+  animations: [
+    SlideInOutAnimation,
+    Fade
+  ]
 })
 export class CreatePatientComponent {
   public formulario!: FormGroup;
@@ -33,7 +37,8 @@ export class CreatePatientComponent {
     private formBuilder: FormBuilder,
     private ownerService: OwnersService,
     private patientService: PatientService,
-    private dialogRef: MatDialogRef<NewRegistrationComponent>, @Inject(MAT_DIALOG_DATA) public data: any
+    private dialogRef: MatDialogRef<NewRegistrationComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
@@ -73,8 +78,8 @@ export class CreatePatientComponent {
     });
 
     this.formatter = (x: { nome: string; cpf: string }) => {
-      if(x){
-        return x.nome
+      if (x) {
+        return x.nome;
       }
       return '';
     };
@@ -83,13 +88,17 @@ export class CreatePatientComponent {
   post() {
     let patient = this.formulario.getRawValue() as Patient;
     this.patientService.post(patient).subscribe({
-      next: patient => {
+      next: (patient) => {
         this.dialogRef.close(true);
-      }
+      },
     });
   }
 
-  public onNoClick(){
+  public onNoClick() {
     this.dialogRef.close(false);
+  }
+
+  showMe(){
+    console.log(this.formulario.get('proprietario'));
   }
 }

@@ -6,7 +6,7 @@
   <h3 class="text-center">Preencha os campos abaixo para cadastrar um novo usuário</h3>
   <form [formGroup]="formulario" class="row g-3 new-registration-form">
     <div class="col-md-12">
-      <label for="proprietario" class="form-label">Proprietário</label>
+      <label for="proprietario" class="form-label" (click)="showMe()">Proprietário</label>
       <div class="input-group mb-3">
         <input formControlName="proprietario" id="proprietario" type="text" class="form-control" *ngIf="false"
           placeholder="Informar o nome do proprietário" aria-label="Informar o nome do proprietário" aria-describedby="button-proprietario"
@@ -31,6 +31,10 @@
       <div *ngIf="formulario.get('proprietario')?.errors?.['required'] && formulario.get('proprietario')?.touched"
         class="ng-invalid-feedback">
         Campo obrigatório.
+      </div>
+      <div [@slideInOut] *ngIf="!formulario.get('proprietario')?.value?.nome && formulario.get('proprietario')?.touched"
+        class="ng-invalid-feedback">
+        Usuário não existe
       </div>
     </div>
 
