@@ -28,13 +28,13 @@
           <span class="material-icons">search</span>
         </button>
       </div>
-      <div *ngIf="formulario.get('proprietario')?.errors?.['required'] && formulario.get('proprietario')?.touched"
+      <div [@slideInOut] [@fade] *ngIf="formulario.get('proprietario')?.errors?.['required'] && formulario.get('proprietario')?.touched"
         class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
-      <div [@slideInOut] *ngIf="!formulario.get('proprietario')?.value?.nome && formulario.get('proprietario')?.touched"
-        class="ng-invalid-feedback">
-        Usuário não existe
+      <div [@slideInOut] [@fade] *ngIf="!formulario.get('proprietario')?.value?.nome && formulario.get('proprietario')?.touched && !formulario.get('proprietario')?.errors?.['required']"
+        class="ng-invalid-feedback d-flex w-100 justify-content-between">
+        Usuário não existe. <button class="btn btn-primary">Adicionar Usuário</button>
       </div>
     </div>
 
@@ -42,7 +42,7 @@
       <label for="nome" class="form-label">Nome</label>
       <input autocomplete="off" formControlName="nome" type="text" class="form-control" id="nome" required
         placeholder="Informar nome">
-      <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched"
+      <div [@slideInOut] [@fade] *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched"
         class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -55,7 +55,7 @@
         <option>Cão</option>
         <option>Gato</option>
       </select>
-      <div *ngIf="formulario.get('especie')?.errors?.['required'] && formulario.get('especie')?.touched"
+      <div [@slideInOut] [@fade] *ngIf="formulario.get('especie')?.errors?.['required'] && formulario.get('especie')?.touched"
         class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -65,7 +65,7 @@
       <label for="fc" class="form-label">FC Nº</label>
       <input autocomplete="off" formControlName="fc" type="text" class="form-control" id="fc" required
         placeholder="123456">
-      <div *ngIf="formulario.get('fc')?.errors?.['required'] && formulario.get('fc')?.touched"
+      <div [@slideInOut] [@fade] *ngIf="formulario.get('fc')?.errors?.['required'] && formulario.get('fc')?.touched"
         class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -75,7 +75,7 @@
       <label for="idade" class="form-label">Idade</label>
       <input autocomplete="off" formControlName="idade" type="number" class="form-control" id="idade"
         required placeholder="informar idade">
-      <div *ngIf="formulario.get('idade')?.errors?.['required'] && formulario.get('idade')?.touched"
+      <div [@slideInOut] [@fade] *ngIf="formulario.get('idade')?.errors?.['required'] && formulario.get('idade')?.touched"
         class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -94,7 +94,7 @@
       <label for="raca" class="form-label">Raça</label>
       <input autocomplete="off" formControlName="raca" type="text" class="form-control" id="raca" required
         placeholder="Informar raça">
-      <div *ngIf="formulario.get('raca')?.errors?.['required'] && formulario.get('raca')?.touched"
+      <div [@slideInOut] [@fade] *ngIf="formulario.get('raca')?.errors?.['required'] && formulario.get('raca')?.touched"
         class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -104,7 +104,7 @@
       <label for="cor" class="form-label">Cor</label>
       <input autocomplete="off" formControlName="cor" type="text" class="form-control" id="cor" required
         placeholder="Informar cor">
-      <div *ngIf="formulario.get('cor')?.errors?.['required'] && formulario.get('cor')?.touched"
+      <div [@slideInOut] [@fade] *ngIf="formulario.get('cor')?.errors?.['required'] && formulario.get('cor')?.touched"
         class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
@@ -114,7 +114,7 @@
       <label for="peso" class="form-label">Peso</label>
       <input autocomplete="off" formControlName="peso" mask="0.00" [dropSpecialCharacters]="false" type="text" class="form-control" id="peso"
         required placeholder="Informar peso em Kg">
-      <div *ngIf="formulario.get('peso')?.errors?.['required'] && formulario.get('peso')?.touched"
+      <div [@slideInOut] [@fade] *ngIf="formulario.get('peso')?.errors?.['required'] && formulario.get('peso')?.touched"
         class="ng-invalid-feedback">
         Campo obrigatório.
       </div>
