@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { CpaService } from './../../../../../core/services/cpa.service';
 import { Fade } from './../../../../../core/animation/animations/fade.animation';
 import { Patient } from 'src/app/core/interfaces/patient';
@@ -58,6 +59,8 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
   patient?: Patient;
   owner!: Owner;
 
+  anamneseGeral!: AnamneseGeral;
+
   constructor(
     private _formBuilder: FormBuilder,
     private patientsService: PatientService,
@@ -92,7 +95,7 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
       sgu: ['', Validators.required],
       sn: ['', Validators.required],
       historicoImunizacao: ['', Validators.required],
-      anamneseGeral: ['', Validators.required],
+      anamneseGeral: [this.formularioAnamneseGeral.getRawValue() , Validators.required],
     });
 
     this.formularioExameObjetivo = this._formBuilder.group({
@@ -162,6 +165,8 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
   }
 
   next(step: number) {
+    console.log('próximo step: '+step);
+
     this.stepper.next();
     this.formularioAnamneseGeral.get('paciente')?.setValue(this.patient);
     this.post(step);
@@ -177,7 +182,12 @@ export class CreateCpaComponent implements OnInit, AfterViewInit {
         this.formularioAnamneseGeral.getRawValue() as AnamneseGeral;
       this.cpaService.postAnamnseGeral(anamneseGeral).subscribe({
         next: (anamneseGeral) => {
-          this.dialogRef.close(true);
+          Swal.fire({
+            text: 'Salvo com sucesso!',
+            icon: 'success'
+          });
+
+          this.anamneseGeral = anamneseGeral;
         },
       });
     }

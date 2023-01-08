@@ -1,4 +1,4 @@
-import { AnamneseGeral, Cpa } from './../interfaces/cpa-clinical-record-interfaces/cpa-table';
+import { AnamneseEspecial, AnamneseGeral, Cpa } from './../interfaces/cpa-clinical-record-interfaces/cpa-table';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -28,6 +28,14 @@ postCPA(cpa: Cpa){
 
 postAnamnseGeral(anamneseGeral: AnamneseGeral): Observable<AnamneseGeral>{
   return this.httpCliente.post<AnamneseGeral>(`${API}/anamneseGeral`, anamneseGeral);
+}
+
+deleteAnamnseGeral(id:number) {
+  return this.httpCliente.delete(`${API}/anamneseGeral/${id}`);
+}
+
+postAnamneseEspecial(anamneseEspecial: AnamneseEspecial): Observable<AnamneseEspecial>{
+  return this.httpCliente.post<AnamneseEspecial>(`${API}/anamneseEspecial`, anamneseEspecial);
 }
 
 }

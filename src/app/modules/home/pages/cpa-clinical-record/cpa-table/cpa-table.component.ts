@@ -7,6 +7,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { MatTableDataSource } from '@angular/material/table';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cpa-table',
@@ -41,10 +42,7 @@ export class CpaTableComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe((result) => {
         console.log(`Dialog result: ${result}`);
-
-        if (result == true) {
-          this.getCpa();
-        }
+        this.getCpa();
       })
     }
   }
@@ -59,5 +57,52 @@ export class CpaTableComponent implements OnInit {
         console.error(err);
       }
     })
+  }
+
+  public deleteAnamnseGeral(id:number){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Tem certeza?',
+      text: "Você quer deletar essa ficha clínica?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não',
+      customClass: {
+        actions: 'gap-2',
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-secondary'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cpaService.deleteAnamnseGeral(id).subscribe({
+          next: res => {
+            swalWithBootstrapButtons.fire(
+              'Excluído!',
+              'A ficha clínica foi excluída.',
+              'success'
+            );
+
+            this.getCpa();
+          }
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelada',
+          'A ficha clínica está salva :)',
+          'error'
+        )
+      }
+    });
   }
 }
